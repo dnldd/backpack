@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
 
 repositories {
-    mavenCentral()
     maven {
-        url "http://52.6.5.127:8085/nexus/content/repositories/snapshots/"
+        url 'https://dl.bintray.com/dnldd/maven/'
     }
 }
 
@@ -29,4 +28,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.1'
+   // compile('com.github.dnldd:sdk:0.0.1@aar')
 }
