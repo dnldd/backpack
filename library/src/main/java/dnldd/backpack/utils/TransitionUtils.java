@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 
-import dnldd.backpack.R;
-
 public class TransitionUtils {
 	public static void transitionFragmentIn(final FragmentManager fragmentManager, android.support.v4.app.Fragment fragment) {
 		transitionFragmentIn(fragmentManager, fragment, false);
@@ -15,7 +13,7 @@ public class TransitionUtils {
 	
 	public static void transitionFragmentIn(final FragmentManager fragmentManager, android.support.v4.app.Fragment fragment, final boolean allowStateLoss){
 		final FragmentTransaction transaction = fragmentManager.beginTransaction();
-		transaction.replace(R.id.container, fragment);
+		transaction.replace(dnldd.backpack.R.id.container, fragment);
 		transaction.addToBackStack(((Object) fragment).getClass().getName());
 		LogUtils.log(LogUtils.INFO_LOG_TYPE, "activity_layout fragment " + ((Object) fragment).getClass().getName() + " transitioning...");
 		if (allowStateLoss) { transaction.commitAllowingStateLoss(); }

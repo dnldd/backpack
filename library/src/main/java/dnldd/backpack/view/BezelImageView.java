@@ -33,8 +33,6 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import dnldd.backpack.R;
-
 /**
  * An {@link android.widget.ImageView} that draws its contents inside a mask and draws a border
  * drawable on top. This is useful for applying a beveled look to image contents, but is also
@@ -70,20 +68,20 @@ public class BezelImageView extends ImageView {
         super(context, attrs, defStyle);
 
         // Attribute initialization
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BezelImageView,
+        final TypedArray a = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.BezelImageView,
                 defStyle, 0);
 
-        mMaskDrawable = a.getDrawable(R.styleable.BezelImageView_maskDrawable);
+        mMaskDrawable = a.getDrawable(dnldd.backpack.R.styleable.BezelImageView_maskDrawable);
         if (mMaskDrawable != null) {
             mMaskDrawable.setCallback(this);
         }
 
-        mBorderDrawable = a.getDrawable(R.styleable.BezelImageView_borderDrawable);
+        mBorderDrawable = a.getDrawable(dnldd.backpack.R.styleable.BezelImageView_borderDrawable);
         if (mBorderDrawable != null) {
             mBorderDrawable.setCallback(this);
         }
 
-        mDesaturateOnPress = a.getBoolean(R.styleable.BezelImageView_desaturateOnPress,mDesaturateOnPress);
+        mDesaturateOnPress = a.getBoolean(dnldd.backpack.R.styleable.BezelImageView_desaturateOnPress,mDesaturateOnPress);
 
         a.recycle();
 

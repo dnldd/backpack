@@ -34,7 +34,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import dnldd.backpack.core.BaseApplication;
-import dnldd.backpack.R;
 import dnldd.backpack.utils.TypefaceUtils;
 
 
@@ -194,13 +193,13 @@ public final class FloatLabelLayout extends FrameLayout {
 
     private void parseAttributes(Context context, AttributeSet attrs) {
         BaseApplication app = (BaseApplication) context.getApplicationContext();
-        final TypedArray floatLabelValues = context.obtainStyledAttributes(attrs, R.styleable.FloatLabelLayout);
-        TypedArray values = context.obtainStyledAttributes(attrs, R.styleable.FloatLabelLayout);
-        int fontStyle = floatLabelValues.getInt(R.styleable.FloatLabelLayout_fontStyle, 0);
-        int textColor = floatLabelValues.getColor(R.styleable.FloatLabelLayout_floatTextColor, R.color.grey_500);
-        int textSize = floatLabelValues.getDimensionPixelSize(R.styleable.FloatLabelLayout_floatTextSize, (int) (12 * context.getResources().getDisplayMetrics().scaledDensity));
+        final TypedArray floatLabelValues = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.FloatLabelLayout);
+        TypedArray values = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.FloatLabelLayout);
+        int fontStyle = floatLabelValues.getInt(dnldd.backpack.R.styleable.FloatLabelLayout_fontStyle, 0);
+        int textColor = floatLabelValues.getColor(dnldd.backpack.R.styleable.FloatLabelLayout_floatTextColor, dnldd.backpack.R.color.grey_500);
+        int textSize = floatLabelValues.getDimensionPixelSize(dnldd.backpack.R.styleable.FloatLabelLayout_floatTextSize, (int) (12 * context.getResources().getDisplayMetrics().scaledDensity));
 
-        final int sidePadding = floatLabelValues.getDimensionPixelSize(R.styleable.FloatLabelLayout_floatLabelSidePadding, dipsToPix(DEFAULT_PADDING_LEFT_RIGHT_DP));
+        final int sidePadding = floatLabelValues.getDimensionPixelSize(dnldd.backpack.R.styleable.FloatLabelLayout_floatLabelSidePadding, dipsToPix(DEFAULT_PADDING_LEFT_RIGHT_DP));
         label = new TextView(context);
         label.setPadding(0, 0, sidePadding, 0);
         label.setVisibility(INVISIBLE);

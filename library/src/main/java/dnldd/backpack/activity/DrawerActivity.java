@@ -35,16 +35,6 @@ public class DrawerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.drawer_layout);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        smoothProgressBar = (SmoothProgressBar) findViewById(R.id.progress);
-
-        setSupportActionBar(toolbar);
-        actionBar = getSupportActionBar();
-
-        /* in extended classes call setupNavigationMenu(R.id.menu) */
     }
 
     @Override
@@ -63,6 +53,18 @@ public class DrawerActivity extends BaseActivity {
                     }
                 });
     }
+
+    public void setupDrawerActivity(int menu){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        smoothProgressBar = (SmoothProgressBar) findViewById(R.id.progress);
+
+        setSupportActionBar(toolbar);
+        actionBar = getSupportActionBar();
+        setupNavigationMenu(menu);
+    }
+
 
     public void setupNavigationMenu(int menu){
         navigationView.inflateMenu(menu);

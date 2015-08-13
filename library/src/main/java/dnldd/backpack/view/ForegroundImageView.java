@@ -26,8 +26,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.ImageView;
 
-import dnldd.backpack.R;
-
 
 public class ForegroundImageView extends ImageView {
 
@@ -53,18 +51,18 @@ public class ForegroundImageView extends ImageView {
     public ForegroundImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ForegroundImageView,
+        TypedArray a = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.ForegroundImageView,
                 defStyle, 0);
 
         mForegroundGravity = a.getInt(
-                R.styleable.ForegroundImageView_android_foregroundGravity, mForegroundGravity);
+                dnldd.backpack.R.styleable.ForegroundImageView_android_foregroundGravity, mForegroundGravity);
 
-        final Drawable d = a.getDrawable(R.styleable.ForegroundImageView_android_foreground);
+        final Drawable d = a.getDrawable(dnldd.backpack.R.styleable.ForegroundImageView_android_foreground);
         if (d != null) {
             setForeground(d);
         }
 
-        mForegroundInPadding = a.getBoolean(R.styleable.ForegroundImageView_android_foregroundInsidePadding, true);
+        mForegroundInPadding = a.getBoolean(dnldd.backpack.R.styleable.ForegroundImageView_android_foregroundInsidePadding, true);
 
         a.recycle();
     }

@@ -6,7 +6,6 @@ import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
 import dnldd.backpack.core.BaseApplication;
-import dnldd.backpack.R;
 import dnldd.backpack.utils.TypefaceUtils;
 
 public class Button extends AppCompatButton {
@@ -29,8 +28,8 @@ public class Button extends AppCompatButton {
     }
     
     private void parseAttributes(Context context, AttributeSet attrs) {
-    	TypedArray values = context.obtainStyledAttributes(attrs, R.styleable.Button);
-        int fontStyle = values.getInt(R.styleable.Button_fontStyle, 0);
+    	TypedArray values = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.Button);
+        int fontStyle = values.getInt(dnldd.backpack.R.styleable.Button_fontStyle, 0);
         BaseApplication app = (BaseApplication) context.getApplicationContext();
         TypefaceUtils.setWidgetTypeface(fontStyle, this);
         values.recycle();

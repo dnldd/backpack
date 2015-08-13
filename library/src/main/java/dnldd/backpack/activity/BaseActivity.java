@@ -8,11 +8,11 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 
+import dnldd.backpack.utils.ImageUploadUtils;
 import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.contract.LifecycleInterface;
 import dnldd.backpack.fragment.BaseFragment;
 import dnldd.backpack.utils.GCMServiceUtils;
-import dnldd.backpack.utils.ImageUploadUtils;
 import dnldd.backpack.utils.SystemUiHelper;
 import rx.Observable;
 import rx.android.lifecycle.LifecycleEvent;

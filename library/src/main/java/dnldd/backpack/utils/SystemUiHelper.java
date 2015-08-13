@@ -156,7 +156,7 @@ public final class SystemUiHelper {
     }
 
     /**
-     * Hide the system UI. What this means depends on the mode this {@link dnldd.backpack.utils.SystemUiHelper} was
+     * Hide the system UI. What this means depends on the mode this {@link SystemUiHelper} was
      * instantiated with.
      *
      * <p>Any currently queued delayed hide requests will be removed.

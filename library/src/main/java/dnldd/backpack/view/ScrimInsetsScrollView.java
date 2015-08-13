@@ -24,8 +24,6 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
 
-import dnldd.backpack.R;
-
 /**
  * A layout that draws something in the insets passed to {@link #fitSystemWindows(android.graphics.Rect)}, i.e. the area above UI chrome
  * (status and navigation bars, overlay action bars).
@@ -53,9 +51,9 @@ public class ScrimInsetsScrollView extends ScrollView {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ScrimInsetsView, defStyle, 0);
+        final TypedArray a = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.ScrimInsetsView, defStyle, 0);
         if (a == null) { return; }
-        mInsetForeground = a.getDrawable(R.styleable.ScrimInsetsView_scrim_insetForeground);
+        mInsetForeground = a.getDrawable(dnldd.backpack.R.styleable.ScrimInsetsView_scrim_insetForeground);
         a.recycle();
 
         setWillNotDraw(true);

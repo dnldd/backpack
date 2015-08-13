@@ -30,7 +30,9 @@ public class SansDrawerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.sans_drawer_layout);
+    }
+
+    public void setupSansDrawerActivity(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         smoothProgressBar = (SmoothProgressBar) findViewById(R.id.progress);
 
