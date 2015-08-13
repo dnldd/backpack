@@ -1,0 +1,66 @@
+<resources>
+    <!-- dimensions -->
+    <dimen name="left_phone_keyline">16dp</dimen>
+    <dimen name="right_phone_keyline">16dp</dimen>
+    <dimen name="left_tab_keyline">24dp</dimen>
+    <dimen name="right_tab_keyline">24dp</dimen>
+    <dimen name="phone_detail_keyline">72dp</dimen>
+    <dimen name="tab_detail_keyline">80dp</dimen>
+
+    <dimen name="phone_list_item_size">56dp</dimen>
+    <dimen name="drawer_margin">56dp</dimen>
+    <dimen name="tab_list_item_size">64dp</dimen>
+
+    <dimen name="toolbar_mobile_landscape_size">56dp</dimen>
+    <dimen name="toolbar_mobile_portrait_size">48dp</dimen>
+    <dimen name="toolbar_tab_size">64dp</dimen>
+
+    <dimen name="avatar_target">48dp</dimen>
+    <dimen name="avatar_padding">4dp</dimen>
+    <dimen name="avatar_size">40dp</dimen>
+
+    <dimen name="icon_target">48dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_padding">12dp</dimen>
+
+    <dimen name="widget_height_target">48dp</dimen>
+
+    <dimen name="button_height_size">36dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
+    <dimen name="button_min_width">64dp</dimen>
+    <dimen name="button_padding">12dp</dimen>
+    <dimen name="button_textsize">14sp</dimen>
+
+    <dimen name="floating_header_height">72dp</dimen>
+
+    <dimen name="textfield_vertical_padding">16dp</dimen>
+    <dimen name="textfield_divider_padding">8dp</dimen>
+
+    <dimen name="caption_textsize">12sp</dimen>
+    <dimen name="body_one_textsize">14sp</dimen>
+    <dimen name="body_two_textsize">14sp</dimen>
+    <dimen name="subhead_textsize">16sp</dimen>
+    <dimen name="title_textsize">20sp</dimen>
+    <dimen name="headline_textsize">24sp</dimen>
+    <dimen name="display_one_textsize">34sp</dimen>
+    <dimen name="display_two_textsize">45sp</dimen>
+    <dimen name="display_three_textsize">56sp</dimen>
+    <dimen name="display_four_textsize">112sp</dimen>
+
+    <dimen name="text_size_large">18sp</dimen>
+
+    <dimen name="no_dimension">0dp</dimen>
+    <dimen name="page_indicator_left_margin">7dp</dimen>
+    <dimen name="page_indicator_bottom_margin">26dp</dimen>
+    <dimen name="nav_icon_margin">32dp</dimen>
+    <dimen name="nav_drawer_width">260dp</dimen>
+
+    <dimen name="sticky_height">100dp</dimen>
+    <dimen name="page_margin">16dp</dimen>
+    <dimen name="nav_drawer_profile_image_size">40dp</dimen>
+    <dimen name="nav_drawer_chosen_account_height">140dp</dimen>
+    <dimen name="caption_header_margin">4dp</dimen>
+
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_inner_padding">8dp</dimen>
+</resources>

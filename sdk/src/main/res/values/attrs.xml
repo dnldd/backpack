@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Define the values for the attribute -->
+    <attr name="fontStyle">
+        <enum name="black" value="1"/>
+        <enum name="black_italic" value="2"/>
+        <enum name="bold" value="3"/>
+        <enum name="bold_italic" value="4"/>
+        <enum name="italic" value="5"/>
+        <enum name="light" value="6"/>
+        <enum name="light_italic" value="7"/>
+        <enum name="medium" value="8"/>
+        <enum name="medium_italic" value="9"/>
+        <enum name="regular" value="10"/>
+        <enum name="thin" value="11"/>
+        <enum name="thin_italic" value="12"/>
+        <enum name="condensed_bold" value="13"/>
+        <enum name="condensed_bold_italic" value="14"/>
+        <enum name="condensed_italic" value="15"/>
+        <enum name="condensed_light" value="16"/>
+        <enum name="condensed_light_italic" value="17"/>
+        <enum name="condensed_regular" value="18"/>
+    </attr>
+
+    <declare-styleable name="SmoothProgressBar">
+        <attr name="spb_color" format="color"/>
+        <attr name="spb_stroke_width" format="dimension"/>
+        <attr name="spb_stroke_separator_length" format="dimension"/>
+        <attr name="spb_sections_count" format="integer"/>
+        <attr name="spb_speed" format="float"/>
+        <attr name="spb_progressiveStart_speed" format="float"/>
+        <attr name="spb_progressiveStop_speed" format="float"/>
+        <attr name="spb_interpolator" format="enum">
+            <enum name="spb_interpolator_accelerate" value="0"/>
+            <enum name="spb_interpolator_linear" value="1"/>
+            <enum name="spb_interpolator_acceleratedecelerate" value="2"/>
+            <enum name="spb_interpolator_decelerate" value="3"/>
+        </attr>
+
+        <attr name="spb_reversed" format="boolean"/>
+        <attr name="spb_mirror_mode" format="boolean"/>
+        <attr name="spb_colors" format="reference"/>
+        <attr name="spb_progressiveStart_activated" format="boolean"/>
+        <attr name="spb_background" format="reference"/>
+        <attr name="spb_generate_background_with_colors" format="boolean"/>
+        <attr name="spb_gradients" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextView">
+        <attr name="fontStyle"/>
+    </declare-styleable>
+    <declare-styleable name="EditText">
+        <attr name="fontStyle"/>
+    </declare-styleable>
+    <declare-styleable name="ToolBoxSpinnerView">
+        <attr name="fontStyle"/>
+    </declare-styleable>
+    <declare-styleable name="Button">
+        <attr name="fontStyle"/>
+    </declare-styleable>
+
+    <declare-styleable name="FloatLabelLayout">
+        <attr name="floatLabelSidePadding" format="reference|dimension" />
+        <attr name="fontStyle"/>
+        <attr name="floatTextSize" format="dimension"/>
+        <attr name="floatTextColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ScrimInsetsView">
+        <attr name="scrim_insetForeground" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="BezelImageView">
+        <attr name="maskDrawable" format="reference" />
+        <attr name="borderDrawable" format="reference" />
+        <attr name="desaturateOnPress" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ForegroundImageView">
+        <attr name="android:foreground" />
+        <attr name="android:foregroundInsidePadding" />
+        <attr name="android:foregroundGravity" />
+    </declare-styleable>
+
+</resources>
