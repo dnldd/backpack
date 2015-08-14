@@ -3,6 +3,7 @@ package dnldd.backpack.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -38,6 +39,16 @@ public class DrawerActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onNewIntent(Intent intent) {
         /* consume notification intents here in onCreate() */
     }
@@ -54,15 +65,14 @@ public class DrawerActivity extends BaseActivity {
                 });
     }
 
-    public void setupDrawerActivity(int menu){
+    public void setupDrawerActivity(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         smoothProgressBar = (SmoothProgressBar) findViewById(R.id.progress);
 
         setSupportActionBar(toolbar);
-        actionBar = getSupportActionBar();
-        setupNavigationMenu(menu);
+        actionBar = getSupportActionBar();;
     }
 
 

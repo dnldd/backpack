@@ -5,8 +5,6 @@
         <item name="colorPrimary">@color/pink_500</item>
         <item name="colorPrimaryDark">@color/pink_900</item>
         <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:popupMenuStyle">@android:style/Widget.Material.Light.PopupMenu</item>
-        <item name="android:dropDownListViewStyle">@android:style/Widget.Material.Light.ListView.DropDown</item>
     </style>
 
     <style name="Spec.Transition" parent=""/>
