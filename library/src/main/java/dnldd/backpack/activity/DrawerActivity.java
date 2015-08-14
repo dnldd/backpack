@@ -65,18 +65,33 @@ public class DrawerActivity extends BaseActivity {
                 });
     }
 
-    public void setupDrawerActivity(){
+    public void setupDrawerActivity(int activityResID, int navigationResID, int homeIconResID){
+        setContentView(activityResID);
+        bindComponents();
+        inflateNavigation(navigationResID);
+        actionBar.setHomeAsUpIndicator(homeIconResID);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        hideProgress();
+    }
+
+    public void setupDrawerActivity(int activityResID, int navigationResID, int homeIconResID, int headerResID){
+        setupDrawerActivity(activityResID, navigationResID, homeIconResID);
+        navigationView.inflateHeaderView(headerResID);
+    }
+
+
+    private void bindComponents(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         smoothProgressBar = (SmoothProgressBar) findViewById(R.id.progress);
 
         setSupportActionBar(toolbar);
-        actionBar = getSupportActionBar();;
+        actionBar = getSupportActionBar();
     }
 
 
-    public void setupNavigationMenu(int menu){
+    private void inflateNavigation(int menu){
         navigationView.inflateMenu(menu);
 
         if (navigationView != null) {

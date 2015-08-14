@@ -7,6 +7,5 @@ import android.content.Intent;
 public class BaseBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        //Fabric.with(context, new Crashlytics());
     }
 }

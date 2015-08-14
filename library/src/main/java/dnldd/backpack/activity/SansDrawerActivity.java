@@ -32,12 +32,18 @@ public class SansDrawerActivity extends BaseActivity {
         super.onCreate(bundle);
     }
 
-    public void setupSansDrawerActivity(){
+    private void bindComponents(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         smoothProgressBar = (SmoothProgressBar) findViewById(R.id.progress);
-
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
+
+    }
+    public void setupSansDrawerActivity(int homeIconResID){
+        bindComponents();
+        actionBar.setHomeAsUpIndicator(homeIconResID);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        hideProgress();
     }
 
     @Override

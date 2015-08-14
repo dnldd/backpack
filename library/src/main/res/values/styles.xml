@@ -3,7 +3,7 @@
 
     <style name="Spec" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/pink_500</item>
-        <item name="colorPrimaryDark">@color/pink_900</item>
+        <item name="colorPrimaryDark">@color/pink_700</item>
         <item name="android:textColorPrimary">@color/white</item>
     </style>
 
@@ -102,9 +102,4 @@
         <item name="android:height">@dimen/toolbar_tab_size</item>
     </style>
 
-    <style name="Spec.PageIndicator">
-        <item name="android:layout_width">5dp</item>
-        <item name="android:layout_height">5dp</item>
-        <item name="android:background">@color/indicator_normal</item>
-    </style>
 </resources>

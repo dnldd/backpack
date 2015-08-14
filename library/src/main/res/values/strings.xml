@@ -1,9 +1,3 @@
 <resources>
-    <!-- constants -->
     <string name="app_name">Base</string>
-    <string name="action_settings">base</string>
-    <string name="drawer_open">open</string>
-    <string name="drawer_close">close</string>
-
-    <string name="nav_placeholder">My Schedule</string>
 </resources>

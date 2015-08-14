@@ -15,11 +15,11 @@ public class TransitionUtils {
 		final FragmentTransaction transaction = fragmentManager.beginTransaction();
 		transaction.replace(dnldd.backpack.R.id.container, fragment);
 		transaction.addToBackStack(((Object) fragment).getClass().getName());
-		LogUtils.log(LogUtils.INFO_LOG_TYPE, "activity_layout fragment " + ((Object) fragment).getClass().getName() + " transitioning...");
+		LogUtils.log(LogUtils.INFO_LOG_TYPE, "bp_activity_layout fragment " + ((Object) fragment).getClass().getName() + " transitioning...");
 		if (allowStateLoss) { transaction.commitAllowingStateLoss(); }
 		else { transaction.commit(); }
 		fragmentManager.executePendingTransactions();
-		LogUtils.log(LogUtils.INFO_LOG_TYPE, "activity_layout fragment " + ((Object) fragment).getClass().getName() + " transitioned to.");
+		LogUtils.log(LogUtils.INFO_LOG_TYPE, "bp_activity_layout fragment " + ((Object) fragment).getClass().getName() + " transitioned to.");
 	}
 	
 	public static void transitionChildFragmentIn(final FragmentManager childFragmentManager, android.support.v4.app.Fragment fragment, int containerID){
