@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import dnldd.backpack.TabPagerItem;
 import dnldd.backpack.fragment.BaseFragment;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
