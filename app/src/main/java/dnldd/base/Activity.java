@@ -2,6 +2,8 @@ package dnldd.base;
 
 import android.os.Bundle;
 
+import dnldd.backpack.utils.ContextUtils;
+
 public class Activity extends dnldd.backpack.activity.BarcodeActivity {
     @Override
     protected void onCreate(Bundle bundle) {
@@ -9,5 +11,11 @@ public class Activity extends dnldd.backpack.activity.BarcodeActivity {
         setupBarcodeActivity(dnldd.backpack.R.layout.bp_scanner_layout);
         //setupDrawerActivity(R.layout.bp_drawer_activity_layout, R.menu.bp_drawer_view, R.drawable.ic_menu);
         //setupDrawerActivity(R.layout.bp_drawer_activity_layout, R.menu.bp_drawer_view, R.drawable.ic_menu, R.layout.nav_header);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ContextUtils.getApp(getApplicationContext()).setupGCMService(getResources().getString(R.string.gcm_third_party));
     }
 }

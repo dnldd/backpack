@@ -21,6 +21,7 @@ import dnldd.backpack.utils.LogUtils;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class GCM {
     public static String TOPICS = "/topics/";
@@ -32,27 +33,29 @@ public class GCM {
         this.context = context;
     }
 
-    public void register(Context context){
-        SharedPreferences prefs = context.getSharedPreferences(BaseApplication.PREF, Context.MODE_PRIVATE);
-        if(!prefs.getBoolean(context.getResources().getString(R.string.gcm_registered), false)) {
+    private void register(){
+       final SharedPreferences prefs = context.getSharedPreferences(BaseApplication.PREF, Context.MODE_PRIVATE);
+
+        if(!prefs.getBoolean(RegistrationIntentService.IS_REGISTERED_KEY, false)) {
             try {
-                synchronized (RegistrationIntentService.class.getSimpleName()) {
+                synchronized (GCM.class.getSimpleName()) {
                     InstanceID instanceID = InstanceID.getInstance(context);
                     String token = instanceID.getToken(context.getResources().getString(R.string.gcm_sender_id), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
                     String id = DeviceIDUtils.getDeviceID(context);
-                    LogUtils.log(RegistrationIntentService.class.getSimpleName(), "GCM Registration Token: " + token);
+                    LogUtils.log(GCM.class.getSimpleName(), "GCM Registration Token: " + token);
 
                     /* sends registration to third party server */
                     sendRegistrationToServer(token, id);
-                    prefs.edit().putBoolean(context.getResources().getString(R.string.gcm_registered), true);
+                    prefs.edit().putString(RegistrationIntentService.GCM_TOKEN, token).apply();
+                    prefs.edit().putBoolean(RegistrationIntentService.IS_REGISTERED_KEY, true).apply();
                 }
             } catch (Exception e) {
-                LogUtils.log(RegistrationIntentService.class.getSimpleName(), "Failed to complete token refresh");
-                prefs.edit().putBoolean(context.getResources().getString(R.string.gcm_registered), true);
+                LogUtils.log(GCM.class.getSimpleName(), "Failed to complete token refresh");
+                prefs.edit().putBoolean(RegistrationIntentService.IS_REGISTERED_KEY, true).apply();
             }
         }
         else {
-            LogUtils.log(RegistrationIntentService.class.getSimpleName(), "Registered for GCM");
+            LogUtils.log(GCM.class.getSimpleName(), "Registered for GCM");
         }
     }
 
@@ -75,22 +78,26 @@ public class GCM {
 
     protected void sendRegistrationToServer(final String token, final String id) {
         ContextUtils.getApp(context).getGcmService().register("", token, id)
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<JsonObject>() {
-            @Override
-            public void onCompleted() {
-            }
+                    @Override
+                    public void onCompleted() {
+                        LogUtils.log(GCM.class.getSimpleName(), "Completed");
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                /* check on the error response  */
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        /* check on the error response  */
+                        LogUtils.log(GCM.class.getSimpleName(), "Error");
+                    }
 
-            @Override
-            public void onNext(JsonObject jsonObject) {
-                /* check on the response here  */
-            }
-        });
+                    @Override
+                    public void onNext(JsonObject jsonObject) {
+                        /* check on the response here  */
+                        LogUtils.log(GCM.class.getSimpleName(), "Registered");
+                    }
+                });
     }
     private void subscribeToTopic(Context context, String registrationToken, String topic){
         String full_topic = TOPICS + context.getPackageName() + "." + topic;
@@ -113,6 +120,15 @@ public class GCM {
             e.printStackTrace();
             /* give UI feedback */
         }
+    }
+
+    public Observable<Object> callRegister(){
+        return Observable.create(new Observable.OnSubscribe<Object>() {
+            @Override
+            public void call(Subscriber<? super Object> subscriber) {
+                register();
+            }
+        });
     }
 
     public  Observable<Object> callUnsubscribeFromTopic(final Context context, final String registeredToken, final String topic){

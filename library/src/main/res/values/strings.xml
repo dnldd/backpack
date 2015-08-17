@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Base</string>
     <string name="gcm_sender_id">143153256358</string>
-    <string name="gcm_registered">registered</string>
     <string name="gcm_third_party"></string>
 </resources>

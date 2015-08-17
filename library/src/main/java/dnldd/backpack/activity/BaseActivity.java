@@ -69,10 +69,8 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
     @Override
     public void onResume(){
         super.onResume();
-        GCMServiceUtils.activate(this);
         lifecycleSubject.onNext(LifecycleEvent.RESUME);
         getAppObject().setCurrentActivity(this);
-        GCMServiceUtils.checkPlayServices(this);
     }
 
     @Override

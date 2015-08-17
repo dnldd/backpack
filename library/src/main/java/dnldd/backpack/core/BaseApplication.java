@@ -26,7 +26,11 @@ import dnldd.backpack.contract.ServiceInterface;
 import dnldd.backpack.fragment.BaseFragment;
 import dnldd.backpack.gcm.GCM;
 import dnldd.backpack.gcm.GCMServiceBuilder;
+import dnldd.backpack.utils.LogUtils;
 import dnldd.backpack.utils.TypefaceUtils;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class BaseApplication extends android.app.Application {
     protected SimpleDateFormat dateFormat;
@@ -122,11 +126,28 @@ public class BaseApplication extends android.app.Application {
     }
 
     /* call this from the main activity of the app */
-    public void setupGCMService(){
+    public void setupGCMService(String thirdPartyUrl){
         if(gcm.hasPlayServices(getApplicationContext())) {
-            gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson);
+            gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson, thirdPartyUrl);
             gcmService = gcmServiceBuilder.getGCMService();
-            gcm.register(getApplicationContext());
+            gcm.callRegister().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<Object>() {
+                        @Override
+                        public void onCompleted() {
+                            LogUtils.log(BaseApplication.class.getSimpleName(), "Completed");
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            LogUtils.log(BaseApplication.class.getSimpleName(), "Error");
+                        }
+
+                        @Override
+                        public void onNext(Object o) {
+                            LogUtils.log(BaseApplication.class.getSimpleName(), "Registered");
+                        }
+            });
         }
     }
 }

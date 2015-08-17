@@ -39,6 +39,9 @@ public class RegistrationIntentService extends IntentService {
         super(RegistrationIntentService.class.getSimpleName());
     }
 
+    public static  String IS_REGISTERED_KEY = "is_client_gcm_registered";
+    public static  String GCM_TOKEN = "gcm_token";
+
     @Override
     protected void onHandleIntent(Intent intent) {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(BaseApplication.PREF, Context.MODE_PRIVATE);
@@ -47,16 +50,16 @@ public class RegistrationIntentService extends IntentService {
                 InstanceID instanceID = InstanceID.getInstance(this);
                 String token = instanceID.getToken(getResources().getString(R.string.gcm_sender_id), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
                 String id = DeviceIDUtils.getDeviceID(getApplicationContext());
-                LogUtils.log(RegistrationIntentService.class.getSimpleName(), "--- GCM Registration Token: " + token + " ---");
+                LogUtils.log(RegistrationIntentService.class.getSimpleName(), "GCM Registration Token: " + token);
 
                 /* sends registration to third party server */
-
                 sendRegistrationToServer(token, id);
-                prefs.edit().putBoolean(getApplicationContext().getResources().getString(R.string.gcm_registered), true);
+                prefs.edit().putString(GCM_TOKEN, token).apply();
+                prefs.edit().putBoolean(IS_REGISTERED_KEY, true).apply();
             }
         } catch (Exception e) {
             Log.d(RegistrationIntentService.class.getSimpleName(), "--- Failed to complete token refresh ---", e);
-            prefs.edit().putBoolean(getApplicationContext().getResources().getString(R.string.gcm_registered), true);
+            prefs.edit().putBoolean(IS_REGISTERED_KEY, true).apply();
         }
         // Notify UI that registration has completed, so the progress indicator can be hidden.
     }
@@ -70,22 +73,24 @@ public class RegistrationIntentService extends IntentService {
      * @param token The new token.
      */
     protected void sendRegistrationToServer(final String token, final String id) {
-        ContextUtils.getApp(getApplicationContext()).getGcmService().register("", token, id)
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<JsonObject>() {
-            @Override
-            public void onCompleted() {
-            }
+        ContextUtils.getApp(getApplicationContext()).getGcmService()
+                .register("", token, id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<JsonObject>() {
+                    @Override
+                    public void onCompleted() {
+                    }
 
-            @Override
-            public void onError(Throwable e) {
+                    @Override
+                    public void onError(Throwable e) {
                 /* check on the error response  */
-            }
+                    }
 
-            @Override
-            public void onNext(JsonObject jsonObject) {
+                    @Override
+                    public void onNext(JsonObject jsonObject) {
                 /* check on the response here  */
-            }
-        });
+                    }
+                });
     }
 
     /**

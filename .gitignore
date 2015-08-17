@@ -1,6 +1,8 @@
 .gradle
 gradlew
 gradlew.bat
+/library/*.iml
+/app/*.iml
 *.iml
 /local.properties
 .idea
