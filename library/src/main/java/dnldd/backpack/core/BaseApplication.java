@@ -21,9 +21,11 @@ import java.util.List;
 import java.util.Locale;
 
 import dnldd.backpack.activity.BaseActivity;
+import dnldd.backpack.contract.GCMServiceInterface;
 import dnldd.backpack.contract.ServiceInterface;
 import dnldd.backpack.fragment.BaseFragment;
-import dnldd.backpack.utils.GCMServiceUtils;
+import dnldd.backpack.gcm.GCM;
+import dnldd.backpack.gcm.GCMServiceBuilder;
 import dnldd.backpack.utils.TypefaceUtils;
 
 public class BaseApplication extends android.app.Application {
@@ -32,8 +34,11 @@ public class BaseApplication extends android.app.Application {
     protected BaseFragment currentFragment;
     protected HashMap<String, android.support.v4.app.Fragment> fragments;
     protected ServiceBuilder serviceBuilder;
+    protected GCMServiceBuilder gcmServiceBuilder;
     protected ServiceCalls serviceCalls;
     protected ServiceInterface service;
+    protected GCM gcm;
+    protected GCMServiceInterface gcmService;
     protected Gson gson;
     protected OkHttpClient client;
     protected File cacheDir;
@@ -46,6 +51,8 @@ public class BaseApplication extends android.app.Application {
 
     public AppData getAppData() { return appData; }
     public ServiceCalls  getServiceCalls() { return serviceCalls; }
+    public GCMServiceInterface getGcmService(){ return gcmService; }
+    public GCM getGcm(){ return  gcm; }
     public Gson getGson(){ return gson; }
     public void setCurrentFragment(BaseFragment fragment){ currentFragment = fragment; }
     public BaseActivity getCurrentActivity(){ return currentActivity; }
@@ -78,7 +85,7 @@ public class BaseApplication extends android.app.Application {
         dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
         fragments = new HashMap<>();
         gson = new GsonBuilder().setDateFormat(BaseApplication.DATE_FORMAT).create();
-        GCMServiceUtils.initialize(getApplicationContext(), gson);
+        gcm = new GCM(getApplicationContext());
         appData = new AppData(getApplicationContext());
         serviceCalls = new ServiceCalls(getApplicationContext());
         cacheDir = getApplicationContext().getExternalCacheDir();
@@ -109,8 +116,17 @@ public class BaseApplication extends android.app.Application {
     public void setCurrentActivity(BaseActivity activity){ currentActivity = activity; }
 
     public <T extends ServiceInterface> void buildService(Class<T> serviceClass){
-        /* builds the REST service  with the supplied service definition*/
+        /* builds the REST service  with the supplied service definition */
         serviceBuilder = new ServiceBuilder(getApplicationContext(), gson);
         service = serviceBuilder.getServiceAdapter().create(serviceClass);
+    }
+
+    /* call this from the main activity of the app */
+    public void setupGCMService(){
+        if(gcm.hasPlayServices(getApplicationContext())) {
+            gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson);
+            gcmService = gcmServiceBuilder.getGCMService();
+            gcm.register(getApplicationContext());
+        }
     }
 }

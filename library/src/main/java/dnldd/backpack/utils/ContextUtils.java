@@ -2,6 +2,7 @@ package dnldd.backpack.utils;
 
 import android.content.Context;
 
+import dnldd.backpack.contract.GCMServiceInterface;
 import dnldd.backpack.core.AppData;
 import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.core.ServiceCalls;
@@ -17,5 +18,9 @@ public class ContextUtils {
 
     public static final ServiceCalls getServiceCalls(Context context){
         return getApp(context).getServiceCalls();
+    }
+
+    public static final GCMServiceInterface getGSMservice(Context context){
+        return getApp(context).getGcmService();
     }
 }
