@@ -16,6 +16,6 @@ public class Activity extends dnldd.backpack.activity.BarcodeActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        ContextUtils.getApp(getApplicationContext()).setupGCMService(getResources().getString(R.string.gcm_third_party));
+        ContextUtils.getApp(getApplicationContext()).setupGCMService("143153256358", "http://google.com");
     }
 }

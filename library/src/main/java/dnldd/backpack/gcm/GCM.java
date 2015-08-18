@@ -12,7 +12,6 @@ import com.google.gson.JsonObject;
 
 import java.io.IOException;
 
-import dnldd.backpack.R;
 import dnldd.backpack.activity.BaseActivity;
 import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.utils.ContextUtils;
@@ -26,32 +25,40 @@ import rx.schedulers.Schedulers;
 public class GCM {
     public static String TOPICS = "/topics/";
     public static int PLAY_SERVICES_REQUEST_TIME = 9000;
+    public static  String IS_REGISTERED_KEY = "is_client_gcm_registered";
+    public static  String GCM_TOKEN = "gcm_token";
 
+    protected String senderID;
+    protected String thirdPartyUrl;
     protected Context context;
 
-    public GCM(Context context){
+    public String getSenderID(){ return senderID; }
+
+    public GCM(Context context, String senderID, String thirdPartyUrl){
         this.context = context;
+        this.senderID = senderID;
+        this.thirdPartyUrl = thirdPartyUrl;
     }
 
     private void register(){
        final SharedPreferences prefs = context.getSharedPreferences(BaseApplication.PREF, Context.MODE_PRIVATE);
 
-        if(!prefs.getBoolean(RegistrationIntentService.IS_REGISTERED_KEY, false)) {
+        if(!prefs.getBoolean(IS_REGISTERED_KEY, false)) {
             try {
                 synchronized (GCM.class.getSimpleName()) {
                     InstanceID instanceID = InstanceID.getInstance(context);
-                    String token = instanceID.getToken(context.getResources().getString(R.string.gcm_sender_id), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+                    String token = instanceID.getToken(ContextUtils.getApp(context).getGcm().getSenderID(), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
                     String id = DeviceIDUtils.getDeviceID(context);
                     LogUtils.log(GCM.class.getSimpleName(), "GCM Registration Token: " + token);
 
                     /* sends registration to third party server */
                     sendRegistrationToServer(token, id);
-                    prefs.edit().putString(RegistrationIntentService.GCM_TOKEN, token).apply();
-                    prefs.edit().putBoolean(RegistrationIntentService.IS_REGISTERED_KEY, true).apply();
+                    prefs.edit().putString(GCM_TOKEN, token).apply();
+                    prefs.edit().putBoolean(IS_REGISTERED_KEY, true).apply();
                 }
             } catch (Exception e) {
                 LogUtils.log(GCM.class.getSimpleName(), "Failed to complete token refresh");
-                prefs.edit().putBoolean(RegistrationIntentService.IS_REGISTERED_KEY, true).apply();
+                prefs.edit().putBoolean(IS_REGISTERED_KEY, true).apply();
             }
         }
         else {

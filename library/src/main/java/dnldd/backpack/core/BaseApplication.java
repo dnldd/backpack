@@ -89,7 +89,6 @@ public class BaseApplication extends android.app.Application {
         dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
         fragments = new HashMap<>();
         gson = new GsonBuilder().setDateFormat(BaseApplication.DATE_FORMAT).create();
-        gcm = new GCM(getApplicationContext());
         appData = new AppData(getApplicationContext());
         serviceCalls = new ServiceCalls(getApplicationContext());
         cacheDir = getApplicationContext().getExternalCacheDir();
@@ -126,26 +125,26 @@ public class BaseApplication extends android.app.Application {
     }
 
     /* call this from the main activity of the app */
-    public void setupGCMService(String thirdPartyUrl){
+    public void setupGCMService(String senderID, String thirdPartyUrl){
+        gcm = new GCM(getApplicationContext(), senderID, thirdPartyUrl);
         if(gcm.hasPlayServices(getApplicationContext())) {
-            gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson, thirdPartyUrl);
+            gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson, gcm.getSenderID());
             gcmService = gcmServiceBuilder.getGCMService();
             gcm.callRegister().subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<Object>() {
                         @Override
                         public void onCompleted() {
-                            LogUtils.log(BaseApplication.class.getSimpleName(), "Completed");
                         }
 
                         @Override
                         public void onError(Throwable e) {
-                            LogUtils.log(BaseApplication.class.getSimpleName(), "Error");
+                            e.printStackTrace();
                         }
 
                         @Override
                         public void onNext(Object o) {
-                            LogUtils.log(BaseApplication.class.getSimpleName(), "Registered");
+                            LogUtils.log(BaseApplication.class.getSimpleName(), "GCM registration successful");
                         }
             });
         }

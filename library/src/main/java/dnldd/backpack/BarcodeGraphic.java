@@ -12,6 +12,9 @@ import com.google.android.gms.vision.barcode.Barcode;
  * overlay view.
  */
 class BarcodeGraphic extends TrackedGraphic<Barcode> {
+    /* TODO: edit this class to just put small boxes in the corners
+
+     */
     private static final int COLOR_CHOICES[] = {
             Color.BLUE,
             Color.CYAN,
@@ -22,6 +25,16 @@ class BarcodeGraphic extends TrackedGraphic<Barcode> {
     private Paint mRectPaint;
     private Paint mTextPaint;
     private volatile Barcode mBarcode;
+
+    /* refactor if needed */
+    public String getBarcodeData(){
+        if(mBarcode != null) {
+            return mBarcode.displayValue;
+        }
+        else {
+            return null;
+        }
+    }
 
     BarcodeGraphic(GraphicOverlay overlay) {
         super(overlay);

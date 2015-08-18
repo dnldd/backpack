@@ -26,7 +26,6 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 import com.google.gson.JsonObject;
 
-import dnldd.backpack.R;
 import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.utils.ContextUtils;
 import dnldd.backpack.utils.DeviceIDUtils;
@@ -39,8 +38,7 @@ public class RegistrationIntentService extends IntentService {
         super(RegistrationIntentService.class.getSimpleName());
     }
 
-    public static  String IS_REGISTERED_KEY = "is_client_gcm_registered";
-    public static  String GCM_TOKEN = "gcm_token";
+
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -48,18 +46,18 @@ public class RegistrationIntentService extends IntentService {
         try {
             synchronized (RegistrationIntentService.class.getSimpleName()) {
                 InstanceID instanceID = InstanceID.getInstance(this);
-                String token = instanceID.getToken(getResources().getString(R.string.gcm_sender_id), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+                String token = instanceID.getToken(ContextUtils.getApp(getApplicationContext()).getGcm().getSenderID(), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
                 String id = DeviceIDUtils.getDeviceID(getApplicationContext());
                 LogUtils.log(RegistrationIntentService.class.getSimpleName(), "GCM Registration Token: " + token);
 
                 /* sends registration to third party server */
                 sendRegistrationToServer(token, id);
-                prefs.edit().putString(GCM_TOKEN, token).apply();
-                prefs.edit().putBoolean(IS_REGISTERED_KEY, true).apply();
+                prefs.edit().putString(GCM.GCM_TOKEN, token).apply();
+                prefs.edit().putBoolean(GCM.IS_REGISTERED_KEY, true).apply();
             }
         } catch (Exception e) {
             Log.d(RegistrationIntentService.class.getSimpleName(), "--- Failed to complete token refresh ---", e);
-            prefs.edit().putBoolean(IS_REGISTERED_KEY, true).apply();
+            prefs.edit().putBoolean(GCM.IS_REGISTERED_KEY, true).apply();
         }
         // Notify UI that registration has completed, so the progress indicator can be hidden.
     }
