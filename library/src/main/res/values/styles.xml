@@ -2,9 +2,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="Spec" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/pink_500</item>
-        <item name="colorPrimaryDark">@color/pink_700</item>
-        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/grey_50</item>
+        <item name="colorPrimaryDark">@color/black_alpha_54</item>
+        <item name="android:textColorPrimary">@color/black_alpha_87</item>
+        <item name="android:textColorSecondary">@color/black_alpha_87</item>
+        <item name="android:windowBackground">@color/grey_50</item>
+
     </style>
 
     <style name="Spec.Transition" parent=""/>

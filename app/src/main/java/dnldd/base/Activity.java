@@ -3,19 +3,24 @@ package dnldd.base;
 import android.os.Bundle;
 
 import dnldd.backpack.utils.ContextUtils;
+import dnldd.backpack.utils.TransitionUtils;
 
-public class Activity extends dnldd.backpack.activity.BarcodeActivity {
+public class Activity extends dnldd.backpack.activity.DrawerActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setupBarcodeActivity(dnldd.backpack.R.layout.bp_scanner_layout);
-        //setupDrawerActivity(R.layout.bp_drawer_activity_layout, R.menu.bp_drawer_view, R.drawable.ic_menu);
+        Application application = (Application) ContextUtils.getApp(getApplicationContext());
+        setupDrawerActivity(R.layout.bp_drawer_activity_layout, R.menu.bp_drawer_view, 0);
+        BPFragment fragment = (BPFragment) application.getFragment(BPFragment.class.getName());
+        TransitionUtils.transitionFragmentIn(application.getCurrentActivity().getSupportFragmentManager(), fragment);
         //setupDrawerActivity(R.layout.bp_drawer_activity_layout, R.menu.bp_drawer_view, R.drawable.ic_menu, R.layout.nav_header);
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-        ContextUtils.getApp(getApplicationContext()).setupGCMService("143153256358", "http://google.com");
+        Application application = (Application) ContextUtils.getApp(getApplicationContext());
+        application.setupGCMService("143153256358", "http://google.com");
+
     }
 }

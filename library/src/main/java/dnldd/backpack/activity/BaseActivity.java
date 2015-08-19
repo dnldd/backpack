@@ -8,10 +8,10 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 
-import dnldd.backpack.utils.ImageUploadUtils;
-import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.contract.LifecycleInterface;
+import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.fragment.BaseFragment;
+import dnldd.backpack.utils.ContextUtils;
 import dnldd.backpack.utils.SystemUiHelper;
 import rx.Observable;
 import rx.android.lifecycle.LifecycleEvent;
@@ -25,7 +25,6 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
 
     private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();
 
-    public BaseApplication getAppObject(){ return ((BaseApplication) getApplicationContext()); }
     public Observable<LifecycleEvent> lifecycle() {
         return lifecycleSubject.asObservable();
     }
@@ -34,6 +33,7 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         lifecycleSubject.onNext(LifecycleEvent.CREATE);
+        ContextUtils.getApp(getApplicationContext()).setCurrentActivity(this);
         notificationBuilder = new NotificationCompat.Builder(getApplicationContext());
         stackBuilder = TaskStackBuilder.create(getApplicationContext());
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
@@ -51,7 +51,6 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
     public void onStart(){
         super.onStart();
         lifecycleSubject.onNext(LifecycleEvent.START);
-        getAppObject().setCurrentActivity(this);
     }
 
     @Override
@@ -70,7 +69,7 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
     public void onResume(){
         super.onResume();
         lifecycleSubject.onNext(LifecycleEvent.RESUME);
-        getAppObject().setCurrentActivity(this);
+        ContextUtils.getApp(getApplicationContext()).setCurrentActivity(this);
     }
 
     @Override
@@ -82,11 +81,6 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
 
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         super.onActivityResult(requestCode, responseCode, intent);
-         if(requestCode == ImageUploadUtils.SELECT_PICTURE){
-            if(responseCode == RESULT_OK) {
-                String path = ImageUploadUtils.getSelectedFilePath(getAppObject().getApplicationContext(), intent.getData());
-                ImageUploadUtils.getPathCache().put(ImageUploadUtils.getUploadKey(), path);
-            }
-        }
+        /* extend this to handle onActivityResult use cases */
     }
 }

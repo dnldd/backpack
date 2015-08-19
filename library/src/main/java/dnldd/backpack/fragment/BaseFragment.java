@@ -1,7 +1,6 @@
 package dnldd.backpack.fragment;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import butterknife.ButterKnife;
 import dnldd.backpack.contract.LifecycleInterface;
 import dnldd.backpack.contract.OnBackPressedInterface;
 import dnldd.backpack.utils.ContextUtils;
-import dnldd.backpack.utils.ImageUploadUtils;
 import dnldd.backpack.utils.LogUtils;
 import rx.Observable;
 import rx.android.lifecycle.LifecycleEvent;
@@ -123,10 +121,7 @@ public class BaseFragment extends android.support.v4.app.Fragment implements OnB
     @Override
     public void onActivityResult(int requestCode, int responseCode, Intent intent) {
         super.onActivityResult(requestCode, responseCode, intent);
-        if(requestCode == ImageUploadUtils.SELECT_PICTURE) {
-            if (responseCode == Activity.RESULT_OK) {
-            }
-        }
+        /* extend this to handle onActivityResult use cases */
     }
 
     public static android.support.v4.app.Fragment createFragment(String fragmentName) {
