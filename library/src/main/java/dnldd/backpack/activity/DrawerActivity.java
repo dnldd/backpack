@@ -3,6 +3,7 @@ package dnldd.backpack.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -16,6 +17,7 @@ public class DrawerActivity extends BaseActivity {
     protected Toolbar toolbar;
     protected NavigationView navigationView;
     protected ActionBar actionBar;
+    protected TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -64,7 +66,6 @@ public class DrawerActivity extends BaseActivity {
         navigationView.inflateHeaderView(headerResID);
     }
 
-
     private void bindComponents(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,9 +73,7 @@ public class DrawerActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
-        //getSupportActionBar().hide();
     }
-
 
     private void inflateNavigation(int menu){
         navigationView.inflateMenu(menu);

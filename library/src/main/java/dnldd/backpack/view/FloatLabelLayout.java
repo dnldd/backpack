@@ -34,7 +34,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import dnldd.backpack.core.BaseApplication;
-import dnldd.backpack.utils.TypefaceUtils;
 
 
 /**
@@ -206,7 +205,6 @@ public final class FloatLabelLayout extends FrameLayout {
         label.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         label.setTextColor(textColor);
         addView(label, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        TypefaceUtils.setWidgetTypeface(fontStyle, label);
 
         floatLabelValues.recycle();
         values.recycle();

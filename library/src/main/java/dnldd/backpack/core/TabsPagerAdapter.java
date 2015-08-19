@@ -1,47 +1,43 @@
 package dnldd.backpack.core;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.SparseArray;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
-
-import dnldd.backpack.fragment.BaseFragment;
+import java.util.List;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
-    protected String[] tabNames;
-    protected SparseArray<android.support.v4.app.Fragment> tabsCache;
-    protected ArrayList<TabPagerItem> tabs;
+    protected List<String> mFragmentTitles;
+    protected List<Fragment> mFragments;
+    protected FragmentManager mFragmentManager;
 
-    public SparseArray<android.support.v4.app.Fragment> getTabsCache(){ return tabsCache; }
+    public List<Fragment> getFragments(){ return mFragments; }
 
-    public TabsPagerAdapter(FragmentManager manager, String [] tabNames, ArrayList<TabPagerItem> tabs) {
+    public TabsPagerAdapter(FragmentManager manager) {
         super(manager);
-        this.tabNames = tabNames;
-        this.tabsCache = new SparseArray<>();
-        this.tabs = tabs;
+        mFragments = new ArrayList<>();
+        mFragmentTitles = new ArrayList<>();
+        mFragmentManager = manager;
+    }
+
+    public void addFragment(Fragment fragment, String title) {
+        mFragments.add(fragment);
+        mFragmentTitles.add(title);
     }
 
     @Override
-    public android.support.v4.app.Fragment getItem(int i) {
-        android.support.v4.app.Fragment fragment = tabsCache.get(i);
-        if (fragment == null){
-            fragment = BaseFragment.createFragment(tabNames[i]);
-            tabsCache.put(i, fragment);
-        }
-        return fragment;
+    public Fragment getItem(int position) {
+        return mFragments.get(position);
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        super.destroyItem(container, position, object);
-        tabsCache.remove(position);
+    public int getCount() {
+        return mFragments.size();
     }
 
     @Override
-    public int getCount() { return tabs.size(); }
-
-    @Override
-    public CharSequence getPageTitle(int position) { return tabs.get(position).getTitle(); }
+    public CharSequence getPageTitle(int position) {
+        return mFragmentTitles.get(position);
+    }
 }

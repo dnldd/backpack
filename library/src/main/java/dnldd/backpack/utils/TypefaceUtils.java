@@ -10,18 +10,25 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TypefaceUtils {
-    public static String LIGHT = "Roboto-Light.ttf";
+    public static String BLACK = "Roboto-Black.ttf";
+    public static String BLACK_ITALIC ="Roboto-BlackItalic.ttf";
+    public static String BOLD ="Roboto-Bold.ttf";
+    public static String BOLD_ITALIC ="Roboto-BoldItalic.ttf";
+    public static String ITALIC ="Roboto-Italic.ttf";
+    public static String LIGHT ="Roboto-Light.ttf";
+    public static String LIGHT_ITALIC ="Roboto-LightItalic.ttf";
+    public static String MEDIUM ="Roboto-Medium.ttf";
+    public static String MEDIUM_ITALIC ="Roboto-MediumItalic.ttf";
     public static String REGULAR ="Roboto-Regular.ttf";
-    public static String THE_SANS_LIGHT_PLAIN = "TheSansLightPlain.ttf";
-    public static String THE_SANS_PLAIN = "TheSansPlain.ttf";
-    public static String THE_SANS_SEMI_LIGHT_PLAIN = "TheSansSemiLightPlain.ttf";
-    public static String THE_SANS_SEMI_BOLD_PLAIN = "TheSansSemiBoldPlain.ttf";
-    public static String THE_SANS_B2_EXTRA_LIGHT = "TheSansB2ExtraLight.otf";
-    public static String THE_SANS_B6_SEMI_BOLD = "TheSansB6SemiBold.otf";
-    public static String THE_SERIF_BLACK_PLAIN = "TheSerifBlackPlain.ttf";
-    public static String THE_SERIF_EXTRA_BOLD_PLAIN = "TheSerifExtraBoldPlain.ttf";
-    public static String THE_SERIF_PLAIN = "TheSerifPlain.ttf";
-    public static String THE_SERIF_SEMI_BOLD_PLAIN = "TheSerifSemiBoldPlain.ttf";
+    public static String THIN ="Roboto-Thin.ttf";
+    public static String THIN_ITALIC ="Roboto-ThinItalic.ttf";
+    public static String CONDENSED_BOLD ="RobotoCondensed-Bold.ttf";
+    public static String CONDENSED_BOLD_ITALIC ="RobotoCondensed-BoldItalic.ttf";
+    public static String CONDENSED_ITALIC ="RobotoCondensed-Italic.ttf";
+    public static String CONDENSED_LIGHT ="RobotoCondensed-Light.ttf";
+    public static String CONDENSED_LIGHT_ITALIC ="RobotoCondensed-LightItalic.ttf";
+    public static String CONDENSED_REGULAR ="RobotoCondensed-Regular.ttf";
+
 
 
     protected static HashMap<String, Typeface> fontsCache;
@@ -38,35 +45,46 @@ public class TypefaceUtils {
     }
 
     protected static void createFontsCache(List<String> assets, AssetManager manager){;
+        loadFont(assets,manager, BLACK);
+        loadFont(assets,manager, BLACK_ITALIC);
+        loadFont(assets,manager, BOLD);
+        loadFont(assets,manager, BOLD_ITALIC);
+        loadFont(assets,manager, ITALIC);
         loadFont(assets,manager, LIGHT);
+        loadFont(assets,manager, LIGHT_ITALIC);
+        loadFont(assets,manager, MEDIUM);
+        loadFont(assets,manager, MEDIUM_ITALIC);
         loadFont(assets,manager, REGULAR);
-        loadFont(assets,manager, THE_SANS_LIGHT_PLAIN);
-        loadFont(assets,manager, THE_SANS_PLAIN);
-        loadFont(assets,manager, THE_SANS_SEMI_LIGHT_PLAIN);
-        loadFont(assets,manager, THE_SANS_SEMI_BOLD_PLAIN);
-        loadFont(assets,manager, THE_SANS_B2_EXTRA_LIGHT);
-        loadFont(assets,manager, THE_SANS_B6_SEMI_BOLD);
-        loadFont(assets,manager, THE_SERIF_BLACK_PLAIN);
-        loadFont(assets,manager, THE_SERIF_EXTRA_BOLD_PLAIN);
-        loadFont(assets,manager, THE_SERIF_PLAIN);
-        loadFont(assets,manager, THE_SERIF_SEMI_BOLD_PLAIN);
+        loadFont(assets,manager, THIN);
+        loadFont(assets,manager, THIN_ITALIC);
+        loadFont(assets,manager, CONDENSED_BOLD);
+        loadFont(assets,manager, CONDENSED_BOLD_ITALIC);
+        loadFont(assets,manager, CONDENSED_ITALIC);
+        loadFont(assets,manager, CONDENSED_LIGHT);
+        loadFont(assets,manager, CONDENSED_LIGHT_ITALIC);
+        loadFont(assets,manager, CONDENSED_REGULAR);
     }
 
     public static void setWidgetTypeface(int fontStyle, TextView view) {
         switch (fontStyle){
-            case 1: { view.setTypeface(fontsCache.get(LIGHT)); } break;
-            case 2: { view.setTypeface(fontsCache.get(REGULAR)); } break;
-            case 3: { view.setTypeface(fontsCache.get(THE_SANS_LIGHT_PLAIN)); } break;
-            case 4: { view.setTypeface(fontsCache.get(THE_SANS_PLAIN)); } break;
-            case 5: { view.setTypeface(fontsCache.get(THE_SANS_SEMI_LIGHT_PLAIN)); } break;
-            case 6: { view.setTypeface(fontsCache.get(THE_SANS_SEMI_BOLD_PLAIN)); } break;
-            case 7: { view.setTypeface(fontsCache.get(THE_SANS_B2_EXTRA_LIGHT)); } break;
-            case 8: { view.setTypeface(fontsCache.get(THE_SANS_B6_SEMI_BOLD)); } break;
-            case 9: { view.setTypeface(fontsCache.get(THE_SERIF_BLACK_PLAIN)); } break;
-            case 10: { view.setTypeface(fontsCache.get(THE_SERIF_EXTRA_BOLD_PLAIN)); } break;
-            case 11: { view.setTypeface(fontsCache.get(THE_SERIF_PLAIN)); } break;
-            case 12: { view.setTypeface(fontsCache.get(THE_SERIF_SEMI_BOLD_PLAIN)); } break;
-
+            case 1: { view.setTypeface(fontsCache.get(BLACK)); } break;
+            case 2: { view.setTypeface(fontsCache.get(BLACK_ITALIC)); } break;
+            case 3: { view.setTypeface(fontsCache.get(BOLD)); } break;
+            case 4: { view.setTypeface(fontsCache.get(BOLD_ITALIC)); } break;
+            case 5: { view.setTypeface(fontsCache.get(ITALIC)); } break;
+            case 6: { view.setTypeface(fontsCache.get(LIGHT)); } break;
+            case 7: { view.setTypeface(fontsCache.get(LIGHT_ITALIC)); } break;
+            case 8: { view.setTypeface(fontsCache.get(MEDIUM)); } break;
+            case 9: { view.setTypeface(fontsCache.get(MEDIUM_ITALIC)); } break;
+            case 10: { view.setTypeface(fontsCache.get(REGULAR)); } break;
+            case 11: { view.setTypeface(fontsCache.get(THIN)); } break;
+            case 12: { view.setTypeface(fontsCache.get(THIN_ITALIC)); } break;
+            case 13: { view.setTypeface(fontsCache.get(CONDENSED_BOLD)); } break;
+            case 14: { view.setTypeface(fontsCache.get(CONDENSED_BOLD_ITALIC)); } break;
+            case 15: { view.setTypeface(fontsCache.get(CONDENSED_ITALIC)); } break;
+            case 16: { view.setTypeface(fontsCache.get(CONDENSED_LIGHT)); } break;
+            case 17: { view.setTypeface(fontsCache.get(CONDENSED_LIGHT_ITALIC)); } break;
+            case 18: { view.setTypeface(fontsCache.get(CONDENSED_REGULAR)); } break;
         }
     }
 

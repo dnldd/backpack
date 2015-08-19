@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.utils.TypefaceUtils;
 
 public class TextView extends AppCompatTextView {
@@ -30,7 +29,6 @@ public class TextView extends AppCompatTextView {
     private void parseAttributes(Context context, AttributeSet attrs) {
         TypedArray values = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.TextView);
        int fontStyle =  values.getInt(dnldd.backpack.R.styleable.TextView_fontStyle, 0);
-       BaseApplication app = (BaseApplication) context.getApplicationContext();
        TypefaceUtils.setWidgetTypeface(fontStyle, this);
        values.recycle();
     }
