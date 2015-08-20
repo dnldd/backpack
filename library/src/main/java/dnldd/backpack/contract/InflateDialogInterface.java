@@ -5,5 +5,5 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public interface InflateDialogInterface {
-    View inflateDialog(int layoutResID, LayoutInflater inflater, ViewGroup container);
+    View inflateDialog(LayoutInflater inflater, ViewGroup container);
 }

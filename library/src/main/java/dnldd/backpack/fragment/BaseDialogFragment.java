@@ -25,10 +25,10 @@ public class BaseDialogFragment extends android.support.v4.app.DialogFragment im
     public Observable<LifecycleEvent> lifecycle() {
         return lifecycleSubject.asObservable();
     }
-	
-	public View inflateDialog(int layoutResID, LayoutInflater inflater, ViewGroup container){
-        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.layoutResID = layoutResID;
+
+    public void setLayout(int layoutResID){  this.layoutResID = layoutResID; }
+
+	public View inflateDialog(LayoutInflater inflater, ViewGroup container){
         this.context = getActivity().getApplicationContext();
 		return inflater.inflate(this.layoutResID, container);
 	}
@@ -41,6 +41,7 @@ public class BaseDialogFragment extends android.support.v4.app.DialogFragment im
 
     @Override
     public void onStart() {
+
         super.onStart();
         lifecycleSubject.onNext(LifecycleEvent.START);
     }
@@ -71,9 +72,8 @@ public class BaseDialogFragment extends android.support.v4.app.DialogFragment im
 
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle bundle) {
-		/* override this in extensions, always.
-		 *  use a card view as the parent view */
-		return null;
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        return inflateDialog(inflater, container);
 	}
 	
 	@Override
