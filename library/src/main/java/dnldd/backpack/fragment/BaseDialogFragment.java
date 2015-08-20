@@ -18,16 +18,19 @@ import rx.subjects.BehaviorSubject;
 
 public class BaseDialogFragment extends android.support.v4.app.DialogFragment implements InflateDialogInterface {
     protected Context context;
-	protected int dialogResId; /* set the dialogResID before calling inflateDialog() */
+	protected int layoutResID;
 
     private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();
+
     public Observable<LifecycleEvent> lifecycle() {
         return lifecycleSubject.asObservable();
     }
 	
-	public View inflateDialog( LayoutInflater inflater, ViewGroup container){
+	public View inflateDialog(int layoutResID, LayoutInflater inflater, ViewGroup container){
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.layoutResID = layoutResID;
         this.context = getActivity().getApplicationContext();
-		return inflater.inflate(dialogResId, container);
+		return inflater.inflate(this.layoutResID, container);
 	}
 
     @Override
@@ -68,8 +71,9 @@ public class BaseDialogFragment extends android.support.v4.app.DialogFragment im
 
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle bundle) {
-		getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
-		return inflateDialog(inflater, container);
+		/* override this in extensions, always.
+		 *  use a card view as the parent view */
+		return null;
 	}
 	
 	@Override
