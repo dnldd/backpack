@@ -41,7 +41,6 @@ public class BaseDialogFragment extends android.support.v4.app.DialogFragment im
 
     @Override
     public void onStart() {
-
         super.onStart();
         lifecycleSubject.onNext(LifecycleEvent.START);
     }
@@ -110,4 +109,5 @@ public class BaseDialogFragment extends android.support.v4.app.DialogFragment im
 	public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
 		return AnimationUtils.loadAnimation(getActivity(), enter ? android.R.anim.fade_in : android.R.anim.fade_out);
 	}
+
 }
