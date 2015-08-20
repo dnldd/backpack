@@ -28,7 +28,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public int getItemViewType(int position) {
-        return -1; /* override this every time after extending */
+        return 0; /* override this every time after extending */
     }
 
     @Override

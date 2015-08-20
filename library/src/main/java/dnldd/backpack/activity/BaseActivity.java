@@ -7,7 +7,13 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
 
+import dnldd.backpack.TypefaceSpan;
 import dnldd.backpack.contract.LifecycleInterface;
 import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.fragment.BaseFragment;
@@ -28,6 +34,7 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
     public Observable<LifecycleEvent> lifecycle() {
         return lifecycleSubject.asObservable();
     }
+    public SystemUiHelper getUiHelper(){ return uiHelper; }
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -82,5 +89,19 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         super.onActivityResult(requestCode, responseCode, intent);
         /* extend this to handle onActivityResult use cases */
+    }
+
+    public void styleTitle(String title, String typefaceName, int colorResID, int size){
+        SpannableString titleSpan = new SpannableString(title);
+        titleSpan.setSpan(new TypefaceSpan(typefaceName), 0, title.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        if(colorResID > 0) {
+            titleSpan.setSpan(new ForegroundColorSpan(getResources().getColor(colorResID)), 0, title.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        if(size > 0){
+            titleSpan.setSpan(new AbsoluteSizeSpan(size, true), 0, title.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        }
+
+        getSupportActionBar().setTitle(titleSpan);
     }
 }

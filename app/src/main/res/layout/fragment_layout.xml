@@ -3,9 +3,4 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/bp_progress_bar"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="2.5dp"/>
 </RelativeLayout>

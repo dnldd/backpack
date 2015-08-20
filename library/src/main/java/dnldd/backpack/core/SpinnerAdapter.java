@@ -32,7 +32,7 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         view.setTextColor(context.getResources().getColor(R.color.black_alpha_87));
         view.setPadding(0, 4, 0,8);
         view.setGravity(Gravity.LEFT);
-        TypefaceUtils.setFontSize(context, view, 14);
+        TypefaceUtils.setFontSize(view, 14);
         return view;
     }
 
@@ -45,7 +45,7 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         view.setTextColor(context.getResources().getColor(R.color.black_alpha_87));
         view.setPadding(8, 16, 8,16);
         view.setGravity(Gravity.CENTER);
-        TypefaceUtils.setFontSize(context, view, 14);
+        TypefaceUtils.setFontSize(view, 14);
         return view;
     }
 }

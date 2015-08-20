@@ -27,6 +27,7 @@ import dnldd.backpack.fragment.BaseFragment;
 import dnldd.backpack.gcm.GCM;
 import dnldd.backpack.gcm.GCMServiceBuilder;
 import dnldd.backpack.utils.LogUtils;
+import dnldd.backpack.utils.TypefaceUtils;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

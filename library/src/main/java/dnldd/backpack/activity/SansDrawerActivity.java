@@ -22,9 +22,12 @@ public class SansDrawerActivity extends BaseActivity {
         actionBar = getSupportActionBar();
 
     }
-    public void setupSansDrawerActivity(int homeIconResID){
+    public void setupSansDrawerActivity(int layoutResID, int homeIconResID){
+        setContentView(layoutResID);
         bindComponents();
-        actionBar.setHomeAsUpIndicator(homeIconResID);
+        if(homeIconResID > 0) {
+            actionBar.setHomeAsUpIndicator(homeIconResID);
+        }
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 

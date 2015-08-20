@@ -3,6 +3,8 @@ package dnldd.backpack.utils;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.support.design.widget.TabLayout;
+import android.text.SpannableString;
 import android.util.TypedValue;
 import android.widget.TextView;
 
@@ -98,7 +100,17 @@ public class TypefaceUtils {
 
     public static Typeface getTypeface (String key) { return fontsCache.get(key); }
 
-    public static void setFontSize(Context context, TextView view, int fontSize){
+    public static void setFontSize(TextView view, int fontSize){
         view.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+    }
+
+    public static void modifyTabs(TabLayout tabLayout){
+        Typeface typeface = TypefaceUtils.getTypeface(TypefaceUtils.CONDENSED_LIGHT);
+
+        for(int index = 0; index < tabLayout.getTabCount(); ++index) {
+            SpannableString spannableString = new SpannableString(tabLayout.getTabAt(index).getText());
+            spannableString.setSpan(typeface, 0, tabLayout.getTabAt(index).getText().length(), 0);
+            tabLayout.getTabAt(index).setText(spannableString);
+        }
     }
 }
