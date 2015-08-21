@@ -16,8 +16,9 @@ import rx.Observable;
 import rx.android.lifecycle.LifecycleEvent;
 import rx.subjects.BehaviorSubject;
 
-public class BaseDialogFragment extends android.support.v4.app.DialogFragment implements InflateDialogInterface {
+public class BaseDialog extends android.support.v4.app.DialogFragment implements InflateDialogInterface {
     protected Context context;
+    protected View view;
 	protected int layoutResID;
 
     private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();
@@ -30,8 +31,14 @@ public class BaseDialogFragment extends android.support.v4.app.DialogFragment im
 
 	public View inflateDialog(LayoutInflater inflater, ViewGroup container){
         this.context = getActivity().getApplicationContext();
-		return inflater.inflate(this.layoutResID, container);
+		view = inflater.inflate(this.layoutResID, container);
+        bind(view);
+        return view;
 	}
+
+    public void bind(View view){
+
+    }
 
     @Override
     public void onAttach(android.app.Activity activity) {
