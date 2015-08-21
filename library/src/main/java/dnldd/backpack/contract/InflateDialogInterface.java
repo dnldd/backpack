@@ -6,4 +6,5 @@ import android.view.ViewGroup;
 
 public interface InflateDialogInterface {
     View inflateDialog(LayoutInflater inflater, ViewGroup container);
+    void bind(View view);
 }

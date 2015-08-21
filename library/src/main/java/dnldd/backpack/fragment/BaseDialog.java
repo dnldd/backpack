@@ -36,9 +36,10 @@ public class BaseDialog extends android.support.v4.app.DialogFragment implements
         return view;
 	}
 
-    public void bind(View view){
-
+    @Override
+    public void bind(View view) {
     }
+
 
     @Override
     public void onAttach(android.app.Activity activity) {
