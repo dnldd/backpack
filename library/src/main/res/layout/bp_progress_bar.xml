@@ -7,7 +7,7 @@
     android:indeterminate="true"
     android:layout_margin="0dp"
     app:spb_sections_count="4"
-    app:spb_color="@color/black_alpha_54"
+    app:spb_color="?colorButtonNormal"
     app:spb_speed="0.9"
     app:spb_interpolator="spb_interpolator_acceleratedecelerate"
     app:spb_stroke_width="8dp"
