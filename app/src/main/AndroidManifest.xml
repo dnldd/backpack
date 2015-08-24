@@ -9,7 +9,7 @@
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
-        <activity android:name=".SActivity"
+        <activity android:name=".NoDrawerActivity"
             android:enabled="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">

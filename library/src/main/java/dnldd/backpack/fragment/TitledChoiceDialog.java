@@ -49,6 +49,6 @@ public class TitledChoiceDialog extends BaseDialog {
             }
         });
 
-        /* override, call super and add the action for ok */
+        /* override, call super and add the action for the ok button */
     }
 }

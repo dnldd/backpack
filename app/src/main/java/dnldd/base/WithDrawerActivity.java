@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import dnldd.backpack.utils.ContextUtils;
 import dnldd.backpack.utils.TypefaceUtils;
 
-public class DActivity extends dnldd.backpack.activity.TabbedDrawerActivity {
+public class WithDrawerActivity extends dnldd.backpack.activity.TabbedDrawerActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

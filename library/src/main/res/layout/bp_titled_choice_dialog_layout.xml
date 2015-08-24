@@ -1,92 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="280dp"
-android:layout_height="260dp"
-android:background="@color/grey_50">
-<RelativeLayout
-    android:layout_width="280dp"
-    android:layout_height="260dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:minWidth="280dp"
+    android:background="@color/grey_50"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <dnldd.backpack.view.Button
-        android:id="@+id/ok"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:minWidth="64dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:text="OK"
-        android:textSize="14dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:background="@drawable/selectable_selector"
-        android:stateListAnimator="@null"
-        android:textColor="@color/light_blue_700"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        app:fontStyle="condensed_regular"/>
-
-    <dnldd.backpack.view.Button
-        android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:minWidth="64dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:text="CANCEL"
-        android:textSize="14dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:shadowRadius="0"
-        android:shadowColor="@null"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:gravity="center"
-        android:textColor="@color/light_blue_700"
-        android:background="@drawable/selectable_selector"
-        android:stateListAnimator="@null"
-        app:fontStyle="condensed_regular"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/ok"
-        android:layout_toStartOf="@+id/ok" />
-
-    <dnldd.backpack.view.TextView
-        android:id="@+id/message"
+    <LinearLayout
+        android:id="@+id/material_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ok"
-        android:layout_marginBottom="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:gravity="center|left"
-        android:layout_marginTop="20dp"
-        android:maxLines="5"
-        android:textSize="16dp"
-        android:text="Are you ready to take this action?\nAre you ready to take this action? \nAre you ready to take this action? \n Are you ready to take this action? \n"
-        app:fontStyle="condensed_light"
-        android:textColor="@color/black_alpha_54" />
+        android:orientation="vertical"
+        android:layout_margin="24dp">
+        <dnldd.backpack.view.TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/message"
+            android:gravity="center|left"
+            android:minLines="2"
+            android:textSize="16dp"
+            android:text="Permissions"
+            android:layout_marginBottom="20dp"
+            app:fontStyle="condensed_regular"
+            android:textColor="@color/black_alpha_87" />
 
-    <dnldd.backpack.view.TextView
-        android:id="@+id/title"
+        <dnldd.backpack.view.TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ok"
+            android:gravity="center|left"
+            android:textSize="16sp"
+            android:text="Are you ready to take this action?"
+            app:fontStyle="condensed_light"
+            android:textColor="@color/black_alpha_54" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/actions"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/message"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:gravity="center|left"
-        android:minLines="2"
-        android:textSize="16dp"
-        android:text="Permissions"
-        app:fontStyle="condensed_regular"
-        android:textColor="@color/black_alpha_87" />
-</RelativeLayout>
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <android.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <dnldd.backpack.view.Button
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="88dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="CANCEL"
+            android:textSize="14dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/light_blue_700"
+            app:fontStyle="condensed_regular" />
+        <dnldd.backpack.view.Button
+            android:id="@+id/ok"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="88dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="OK"
+            android:textSize="14dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/light_blue_700"
+            app:fontStyle="condensed_regular"/>
+    </LinearLayout>
+</LinearLayout>
