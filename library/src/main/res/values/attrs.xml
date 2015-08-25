@@ -58,6 +58,15 @@
     <declare-styleable name="Button">
         <attr name="fontStyle"/>
     </declare-styleable>
+    <declare-styleable name="Switch">
+        <attr name="fontStyle"/>
+    </declare-styleable>
+    <declare-styleable name="CheckBox">
+        <attr name="fontStyle"/>
+    </declare-styleable>
+    <declare-styleable name="RadioButton">
+        <attr name="fontStyle"/>
+    </declare-styleable>
 
     <declare-styleable name="BezelImageView">
         <attr name="maskDrawable" format="reference" />
