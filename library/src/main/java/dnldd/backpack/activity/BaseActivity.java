@@ -48,6 +48,7 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
         uiHelper.show();
     }
 
+
     @Override
     public void onDestroy(){
         lifecycleSubject.onNext(LifecycleEvent.DESTROY);

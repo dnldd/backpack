@@ -55,7 +55,6 @@
                 android:background="?attr/colorPrimary"
                 android:textColor="?android:textColorPrimary" />
         </android.support.design.widget.AppBarLayout>
-
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
@@ -64,5 +63,4 @@
         android:layout_width="wrap_content"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"/>
-
 </android.support.v4.widget.DrawerLayout>

@@ -7,9 +7,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 
 import dnldd.backpack.R;
+import dnldd.backpack.TypefaceSpan;
 
 public class DrawerActivity extends BaseActivity {
     protected DrawerLayout drawerLayout;
@@ -37,6 +42,7 @@ public class DrawerActivity extends BaseActivity {
         /* consume notification intents here in onCreate() */
     }
 
+    /* handle menu item click events here */
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -49,18 +55,18 @@ public class DrawerActivity extends BaseActivity {
                 });
     }
 
-    public void setupDrawerActivity(int layoutResID, int navigationResID, int homeIconResID){
+    public void setupDrawerActivity(int layoutResID, int navigationResID, int homeIconResID, TypefaceSpan typefaceSpan){
         setContentView(layoutResID);
         bindComponents();
-        inflateNavigation(navigationResID);
+        inflateNavigation(navigationResID, typefaceSpan);
         if(homeIconResID != 0) {
             actionBar.setHomeAsUpIndicator(homeIconResID);
         }
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    public void setupDrawerActivity(int activityResID, int navigationResID, int homeIconResID, int headerResID){
-        setupDrawerActivity(activityResID, navigationResID, homeIconResID);
+    public void setupDrawerActivity(int activityResID, int navigationResID, int homeIconResID, int headerResID, TypefaceSpan typefaceSpan){
+        setupDrawerActivity(activityResID, navigationResID, homeIconResID, typefaceSpan);
         navigationView.inflateHeaderView(headerResID);
     }
 
@@ -73,8 +79,28 @@ public class DrawerActivity extends BaseActivity {
         actionBar = getSupportActionBar();
     }
 
-    private void inflateNavigation(int menu){
+    private void inflateNavigation(int menu, TypefaceSpan typefaceSpan){
         navigationView.inflateMenu(menu);
+        Menu items = navigationView.getMenu();
+
+
+        for (int index = 0; index < items.size(); ++index){
+            MenuItem item = items.getItem(index);
+            SpannableString spannableString = new SpannableString(item.getTitle());
+            spannableString.setSpan(typefaceSpan, 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+            item.setTitle(spannableString);
+
+            if(item.hasSubMenu()){
+                SubMenu subMenu = item.getSubMenu();
+
+                for (int subIndex = 0; subIndex < subMenu.size(); ++subIndex) {
+                    MenuItem subItem = subMenu.getItem(subIndex);
+                    SpannableString spannableSubString = new SpannableString(subItem.getTitle());
+                    spannableSubString.setSpan(typefaceSpan, 0, spannableSubString.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                    subItem.setTitle(spannableSubString);
+                }
+            }
+        }
 
         if (navigationView != null) {
             setupDrawerContent(navigationView);
