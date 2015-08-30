@@ -26,6 +26,6 @@ android {
 }
 
 dependencies {
-    compile project(':library')
+    //compile project(':library')
     //compile('com.github.dnldd:library:0.0.1@aar')
 }

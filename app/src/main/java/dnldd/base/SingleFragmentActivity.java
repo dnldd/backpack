@@ -21,10 +21,10 @@ public class SingleFragmentActivity extends dnldd.backpack.activity.TabbedSansDr
         Application application = (Application) ContextUtils.getApp(getApplicationContext());
         application.setupGCMService("143153256358", "http://google.com");
 
-        /* ShowcaseFragment fragment = (ShowcaseFragment) application.getFragment(ShowcaseFragment.class.getName());
-        TransitionUtils.transitionFragmentIn(application.getCurrentActivity().getSupportFragmentManager(), fragment); */
-
-        FormFragment fragment = (FormFragment) application.getFragment(FormFragment.class.getName());
+        ShowcaseFragment fragment = (ShowcaseFragment) application.getFragment(ShowcaseFragment.class.getName());
         TransitionUtils.transitionFragmentIn(application.getCurrentActivity().getSupportFragmentManager(), fragment);
+
+        /* FormFragment fragment = (FormFragment) application.getFragment(FormFragment.class.getName());
+        TransitionUtils.transitionFragmentIn(application.getCurrentActivity().getSupportFragmentManager(), fragment); */
     }
 }

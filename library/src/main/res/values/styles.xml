@@ -19,6 +19,6 @@
         <!-- sets the normal color state for all controls, including the home icon  -->
         <item name="colorControlNormal">@color/grey_700</item>
         <!-- sets the highlight color static for all controls, including the home icon  -->
-        <item name="colorControlHighlight">@color/blue_a700</item>
+        <item name="colorControlHighlight">@color/blue_900</item>
     </style>
 </resources>
