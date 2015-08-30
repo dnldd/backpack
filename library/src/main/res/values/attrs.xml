@@ -58,16 +58,14 @@
     <declare-styleable name="Button">
         <attr name="fontStyle"/>
     </declare-styleable>
-
-    <declare-styleable name="FloatLabelLayout">
-        <attr name="floatLabelSidePadding" format="reference|dimension" />
+    <declare-styleable name="Switch">
         <attr name="fontStyle"/>
-        <attr name="floatTextSize" format="dimension"/>
-        <attr name="floatTextColor" format="color"/>
     </declare-styleable>
-
-    <declare-styleable name="ScrimInsetsView">
-        <attr name="scrim_insetForeground" format="reference|color" />
+    <declare-styleable name="CheckBox">
+        <attr name="fontStyle"/>
+    </declare-styleable>
+    <declare-styleable name="RadioButton">
+        <attr name="fontStyle"/>
     </declare-styleable>
 
     <declare-styleable name="BezelImageView">

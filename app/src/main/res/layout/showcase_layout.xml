@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_50"
+    android:focusableInTouchMode="true">
+        <include
+            layout="@layout/bp_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="60dp"
+            android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+            <dnldd.backpack.view.EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:inputType="textPersonName"
+                android:textColorHighlight="@color/black_alpha_54"
+                android:textColor="@color/black_alpha_87"
+                app:fontStyle="condensed_light"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:hint="Name" />
+            <dnldd.backpack.view.EditText
+                android:id="@+id/telephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:inputType="phone"
+                android:textColorHighlight="@color/black_alpha_54"
+                android:textColor="@color/black_alpha_87"
+                app:fontStyle="condensed_light"
+                android:textSize="16sp"
+                android:hint="Phone Number" />
+
+            <dnldd.backpack.view.Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:minWidth="280dp"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                app:fontStyle="condensed_regular"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:text="yeah"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black_alpha_87"
+                    android:id="@+id/spinner"
+                    android:layout_marginRight="8dp"/>
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black_alpha_87"
+                    android:id="@+id/spinnerr" />
+            </LinearLayout>
+
+            <include layout="@layout/bp_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <dnldd.backpack.view.Switch
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_alpha_87"
+                    android:id="@+id/control_switch"
+                    android:text="Controls"
+                    app:fontStyle="condensed_light"
+                    android:layout_marginRight="8dp"/>
+
+                <dnldd.backpack.view.Switch
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_alpha_87"
+                    android:text="Toggle"
+                    app:fontStyle="condensed_light"
+                    android:id="@+id/toggle_switch" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="horizontal">
+                    <dnldd.backpack.view.CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black_alpha_87"
+                        android:id="@+id/rerun"
+                        android:text="Re-run"
+                        app:fontStyle="condensed_light"
+                        android:layout_marginRight="8dp"/>
+
+                    <dnldd.backpack.view.CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black_alpha_87"
+                        android:text="Rewind"
+                        app:fontStyle="condensed_light"
+                        android:id="@+id/rewind"
+                        android:layout_marginRight="8dp"/>
+                    <dnldd.backpack.view.CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black_alpha_87"
+                        android:text="Replay"
+                        app:fontStyle="condensed_light"
+                        android:id="@+id/replay" />
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="horizontal">
+                <dnldd.backpack.view.RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:padding="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_alpha_87"
+                    android:id="@+id/left"
+                    android:text="Left"
+                    app:fontStyle="condensed_light"
+                    android:layout_marginRight="8dp"/>
+
+                <dnldd.backpack.view.RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_alpha_87"
+                    android:text="Center"
+                    app:fontStyle="condensed_light"
+                    android:id="@+id/center"
+                    android:layout_marginRight="8dp"/>
+                <dnldd.backpack.view.RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_alpha_87"
+                    android:text="Right"
+                    app:fontStyle="condensed_light"
+                    android:id="@+id/right" />
+            </RadioGroup>
+
+            <dnldd.backpack.view.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/black_alpha_87"
+                android:text="Right is where the wrong people go when the going get tough"
+                app:fontStyle="condensed_light"
+                android:id="@+id/text" />
+        </LinearLayout>
+        </ScrollView>
+</RelativeLayout>

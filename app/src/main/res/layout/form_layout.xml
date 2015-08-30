@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_50"
+    android:focusableInTouchMode="true">
+    <LinearLayout
+        android:id="@+id/layered_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            layout="@layout/bp_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"/>
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/grey_200"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pattern"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layered_container"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="28dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <dnldd.backpack.view.EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:inputType="textPersonName"
+                android:textColorHighlight="@color/black_alpha_54"
+                android:textColor="@color/black_alpha_87"
+                app:fontStyle="condensed_light"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:hint="Name" />
+
+            <dnldd.backpack.view.EditText
+                android:id="@+id/telephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:inputType="phone"
+                android:textColorHighlight="@color/black_alpha_54"
+                android:textColor="@color/black_alpha_87"
+                app:fontStyle="condensed_light"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:hint="Phone number" />
+
+            <dnldd.backpack.view.EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:inputType="textEmailAddress"
+                android:textColorHighlight="@color/black_alpha_54"
+                android:textColor="@color/black_alpha_87"
+                app:fontStyle="condensed_light"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:hint="Email" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"/>
+                <dnldd.backpack.view.RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_alpha_54"
+                    android:text="Male"
+                    app:fontStyle="condensed_light"
+                    android:id="@+id/male_gender"
+                    android:layout_marginRight="48dp"/>
+                <dnldd.backpack.view.RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black_alpha_54"
+                    android:text="Female"
+                    app:fontStyle="condensed_light"
+                    android:id="@+id/female_gender" />
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"/>
+            </RadioGroup>
+
+            <dnldd.backpack.view.Button
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:minWidth="280dp"
+                android:padding="16dp"
+                app:fontStyle="condensed_regular"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:text="register"/>
+        </LinearLayout>
+    </ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bp_camera"
+        app:backgroundTint="?attr/colorButtonNormal"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="154dp"
+        app:fabSize="normal" />
+</RelativeLayout>

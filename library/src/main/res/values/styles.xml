@@ -2,11 +2,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="Spec" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- sets the appbar color  -->
         <item name="colorPrimary">@color/grey_50</item>
+        <!-- sets the toolbar color -->
         <item name="colorPrimaryDark">@color/black_alpha_54</item>
+        <!-- sets the appbar title color-->
         <item name="android:textColorPrimary">@color/black_alpha_87</item>
-        <item name="android:textColorSecondary">@color/black_alpha_87</item>
+        <!-- sets the icon color for the menu items in the nav drawer -->
+        <item name="android:textColorSecondary">@color/grey_700</item>
+        <!-- sets the background color for window -->
         <item name="android:windowBackground">@color/grey_50</item>
+        <!-- sets the normal color state for buttons  -->
+        <item name="colorButtonNormal">@color/blue_a700</item>
+        <!-- sets the activated color state for all controls, including the home icon  -->
+        <item name="colorControlActivated">@color/blue_a700</item>
+        <!-- sets the normal color state for all controls, including the home icon  -->
+        <item name="colorControlNormal">@color/grey_700</item>
+        <!-- sets the highlight color static for all controls, including the home icon  -->
+        <item name="colorControlHighlight">@color/blue_900</item>
     </style>
-
 </resources>

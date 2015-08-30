@@ -15,12 +15,14 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="?attr/colorPrimaryDark"
+    android:background="@color/grey_500"
     android:padding="16dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
     android:orientation="vertical"
     android:gravity="bottom">
 
@@ -28,6 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Navigation"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        app:fontStyle="condensed_regular"/>
 
 </LinearLayout>
