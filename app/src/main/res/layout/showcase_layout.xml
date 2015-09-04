@@ -16,6 +16,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="60dp"
+            android:fadingEdge="none"
             android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"

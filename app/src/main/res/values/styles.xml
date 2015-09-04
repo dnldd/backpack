@@ -2,7 +2,24 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="@style/Spec">
-        <!-- Customize your theme here. -->
+        <!--&lt;!&ndash; sets the appbar color  &ndash;&gt;
+        <item name="colorPrimary">@color/pink_500</item>
+        &lt;!&ndash; sets the toolbar color &ndash;&gt;
+        <item name="colorPrimaryDark">@color/pink_800</item>
+        &lt;!&ndash; sets the appbar title color&ndash;&gt;
+        <item name="android:textColorPrimary">@color/white</item>
+        &lt;!&ndash; sets the icon color for the menu items in the nav drawer &ndash;&gt;
+        <item name="android:textColorSecondary">@color/grey_700</item>
+        &lt;!&ndash; sets the background color for window &ndash;&gt;
+        <item name="android:windowBackground">@color/grey_50</item>
+        &lt;!&ndash; sets the normal color state for buttons  &ndash;&gt;
+        <item name="colorButtonNormal">@color/pink_500</item>
+        &lt;!&ndash; sets the activated color state for all controls, including the home icon  &ndash;&gt;
+        <item name="colorControlActivated">@color/pink_a700</item>
+        &lt;!&ndash; sets the normal color state for all controls, including the home icon  &ndash;&gt;
+        <item name="colorControlNormal">@color/pink_700</item>
+        &lt;!&ndash; sets the highlight color static for all controls, including the home icon  &ndash;&gt;
+        <item name="colorControlHighlight">@color/pink_900</item>-->
     </style>
 
 </resources>

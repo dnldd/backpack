@@ -5,7 +5,7 @@
 
     <application android:allowBackup="true" android:label="@string/app_name"
         android:name=".Application"
-        android:icon="@mipmap/ic_launcher" android:theme="@style/Spec">
+        android:icon="@mipmap/ic_launcher" android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />

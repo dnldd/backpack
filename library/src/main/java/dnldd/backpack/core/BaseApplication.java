@@ -119,9 +119,7 @@ public class BaseApplication extends android.app.Application {
     public void setCurrentActivity(BaseActivity activity){ currentActivity = activity; }
 
     public <T extends ServiceInterface> void buildService(Class<T> serviceClass){
-        /* builds the REST service  with the supplied service definition */
-        serviceBuilder = new ServiceBuilder(getApplicationContext(), gson);
-        service = serviceBuilder.getServiceAdapter().create(serviceClass);
+        /* extend this to build the service with the supplied service definition */
     }
 
     /* call this from the main activity of the app */
