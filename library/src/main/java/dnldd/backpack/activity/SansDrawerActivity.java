@@ -9,13 +9,16 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.widget.ImageView;
 
 import dnldd.backpack.R;
 import dnldd.backpack.TypefaceSpan;
+import dnldd.backpack.utils.ContextUtils;
 
 public class SansDrawerActivity extends BaseActivity {
     protected Toolbar toolbar;
     protected CollapsingToolbarLayout collapsingToolbarLayout;
+    protected ImageView backdrop;
     protected ActionBar actionBar;
 
     @Override
@@ -38,11 +41,13 @@ public class SansDrawerActivity extends BaseActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    public void setupCollapsingToolbar(){
+    public void setupCollapsingToolbar(int backdropResID){
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        backdrop = (ImageView) findViewById(R.id.backdrop);
+        ContextUtils.getApp(getApplicationContext()).getPicasso().load(backdropResID).into(backdrop);
     }
 
-    public void setupCollapsingToolbarTitle(String title, String typefaceName, int baseColorResID, int expandedColorResID){
+    public void setupCollapsingTitle(String title, String typefaceName, int baseColorResID, int expandedColorResID){
         SpannableString titleSpan = new SpannableString(title);
         titleSpan.setSpan(new TypefaceSpan(typefaceName), 0, title.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         titleSpan.setSpan(new ForegroundColorSpan(getResources().getColor(baseColorResID)), 0, title.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

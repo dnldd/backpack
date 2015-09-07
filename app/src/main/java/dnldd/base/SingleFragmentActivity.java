@@ -11,8 +11,8 @@ public class SingleFragmentActivity extends dnldd.backpack.activity.TabbedSansDr
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setupSansDrawerActivity(R.layout.bp_paralax_toolbar_layout, 0);
-        setupCollapsingToolbar();
-        setupCollapsingToolbarTitle("Base", TypefaceUtils.CONDENSED_REGULAR, dnldd.backpack.R.color.black_alpha_87, dnldd.backpack.R.color.pink_500);
+        setupCollapsingToolbar(R.drawable.pattern);
+        setupCollapsingTitle("Base", TypefaceUtils.CONDENSED_REGULAR, dnldd.backpack.R.color.black_alpha_87, R.color.transparent);
     }
 
     @Override

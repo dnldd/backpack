@@ -58,6 +58,7 @@ public class BaseApplication extends android.app.Application {
     public GCMServiceInterface getGcmService(){ return gcmService; }
     public GCM getGcm(){ return  gcm; }
     public Gson getGson(){ return gson; }
+    public Picasso getPicasso(){ return picasso; }
     public void setCurrentFragment(BaseFragment fragment){ currentFragment = fragment; }
     public BaseActivity getCurrentActivity(){ return currentActivity; }
     public BaseFragment getCurrentFragment(){ return currentFragment; }
