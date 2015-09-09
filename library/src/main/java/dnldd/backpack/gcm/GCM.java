@@ -85,7 +85,7 @@ public class GCM {
 
     protected void sendRegistrationToServer(final String token, final String id) {
         ContextUtils.getApp(context).getGcmService().register("", token, id)
-                .observeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<JsonObject>() {
                     @Override

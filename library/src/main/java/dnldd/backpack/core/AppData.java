@@ -17,7 +17,8 @@ public class AppData {
     protected String CACHE_FILENAME = "cache";
     protected int VALUE_COUNT = 1;
 
-
+    /* add @DebugLog annotations to your methods to get detailed logs
+        for methods [method, time, parameters] in your debug builds  */
     public DiskLruCache getDiskLruCache() { return diskLruCache; }
 
     protected AppData(Context context){

@@ -6,40 +6,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+
 import dnldd.backpack.TypefaceSpan;
-import dnldd.backpack.contract.LifecycleInterface;
 import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.fragment.BaseFragment;
 import dnldd.backpack.utils.ContextUtils;
 import dnldd.backpack.utils.SystemUiHelper;
-import rx.Observable;
-import rx.android.lifecycle.LifecycleEvent;
-import rx.subjects.BehaviorSubject;
 
-public class BaseActivity extends AppCompatActivity implements LifecycleInterface {
+public class BaseActivity extends RxAppCompatActivity {
     protected NotificationCompat.Builder notificationBuilder;
     protected TaskStackBuilder stackBuilder;
     protected NotificationManager notificationManager;
     protected SystemUiHelper uiHelper;
 
-    private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();
-
-    public Observable<LifecycleEvent> lifecycle() {
-        return lifecycleSubject.asObservable();
-    }
-    public SystemUiHelper getUiHelper(){ return uiHelper; }
+    public SystemUiHelper getUIHelper(){ return uiHelper; }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        lifecycleSubject.onNext(LifecycleEvent.CREATE);
         ContextUtils.getApp(getApplicationContext()).setCurrentActivity(this);
         notificationBuilder = new NotificationCompat.Builder(getApplicationContext());
         stackBuilder = TaskStackBuilder.create(getApplicationContext());
@@ -48,35 +39,9 @@ public class BaseActivity extends AppCompatActivity implements LifecycleInterfac
         uiHelper.show();
     }
 
-
-    @Override
-    public void onDestroy(){
-        lifecycleSubject.onNext(LifecycleEvent.DESTROY);
-        super.onDestroy();
-    }
-
-    @Override
-    public void onStart(){
-        super.onStart();
-        lifecycleSubject.onNext(LifecycleEvent.START);
-    }
-
-    @Override
-    protected void onStop() {
-        lifecycleSubject.onNext(LifecycleEvent.STOP);
-        super.onStop();
-    }
-
-    @Override
-    public void onPause(){
-        lifecycleSubject.onNext(LifecycleEvent.PAUSE);
-        super.onPause();
-    }
-
     @Override
     public void onResume(){
         super.onResume();
-        lifecycleSubject.onNext(LifecycleEvent.RESUME);
         ContextUtils.getApp(getApplicationContext()).setCurrentActivity(this);
     }
 

@@ -131,7 +131,7 @@ public class BaseApplication extends android.app.Application {
         if(gcm.hasPlayServices(getApplicationContext())) {
             gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson, gcm.getSenderID());
             gcmService = gcmServiceBuilder.getGCMService();
-            gcm.callRegister().subscribeOn(Schedulers.io())
+            gcm.callRegister().subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<Object>() {
                         @Override

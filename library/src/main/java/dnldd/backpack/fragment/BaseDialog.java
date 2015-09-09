@@ -2,7 +2,6 @@ package dnldd.backpack.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,21 +10,14 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import dnldd.backpack.contract.InflateDialogInterface;
-import rx.Observable;
-import rx.android.lifecycle.LifecycleEvent;
-import rx.subjects.BehaviorSubject;
+import com.trello.rxlifecycle.components.support.RxDialogFragment;
 
-public class BaseDialog extends android.support.v4.app.DialogFragment implements InflateDialogInterface {
+import dnldd.backpack.contract.InflateDialogInterface;
+
+public class BaseDialog extends RxDialogFragment implements InflateDialogInterface {
     protected Context context;
     protected View view;
 	protected int layoutResID;
-
-    private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();
-
-    public Observable<LifecycleEvent> lifecycle() {
-        return lifecycleSubject.asObservable();
-    }
 
     public void setLayout(int layoutResID){  this.layoutResID = layoutResID; }
 
@@ -38,43 +30,7 @@ public class BaseDialog extends android.support.v4.app.DialogFragment implements
 
     @Override
     public void bind(View view) {
-    }
-
-
-    @Override
-    public void onAttach(android.app.Activity activity) {
-        super.onAttach(activity);
-        lifecycleSubject.onNext(LifecycleEvent.ATTACH);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        lifecycleSubject.onNext(LifecycleEvent.START);
-    }
-
-	@Override
-	public void onResume() {
-		super.onResume();
-        lifecycleSubject.onNext(LifecycleEvent.RESUME);
-	}
-
-    @Override
-    public void onPause() {
-        lifecycleSubject.onNext(LifecycleEvent.PAUSE);
-        super.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        lifecycleSubject.onNext(LifecycleEvent.STOP);
-        super.onStop();
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        lifecycleSubject.onNext(LifecycleEvent.CREATE);
+        /* bind to the widgets and elements in your dialog here */
     }
 
     @Override
@@ -82,31 +38,7 @@ public class BaseDialog extends android.support.v4.app.DialogFragment implements
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         return inflateDialog(inflater, container);
 	}
-	
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-        lifecycleSubject.onNext(LifecycleEvent.CREATE_VIEW);
-	}
 
-    @Override
-    public void onDestroyView() {
-        lifecycleSubject.onNext(LifecycleEvent.DESTROY_VIEW);
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onDestroy() {
-        lifecycleSubject.onNext(LifecycleEvent.DESTROY);
-        super.onDestroy();
-    }
-
-    @Override
-    public void onDetach() {
-        lifecycleSubject.onNext(LifecycleEvent.DETACH);
-        super.onDetach();
-    }
-	
 	@Override
 	public void show(FragmentManager manager, String tag) {
 		try { super.show(manager, tag); }
@@ -117,5 +49,4 @@ public class BaseDialog extends android.support.v4.app.DialogFragment implements
 	public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
 		return AnimationUtils.loadAnimation(getActivity(), enter ? android.R.anim.fade_in : android.R.anim.fade_out);
 	}
-
 }
