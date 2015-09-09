@@ -54,6 +54,9 @@ public class BaseApplication extends android.app.Application {
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     public AppData getAppData() { return appData; }
+    public void setAppData(AppData data){
+        this.appData = data;
+    }
     public ServiceCalls  getServiceCalls() { return serviceCalls; }
     public GCMServiceInterface getGcmService(){ return gcmService; }
     public GCM getGcm(){ return  gcm; }
@@ -90,7 +93,6 @@ public class BaseApplication extends android.app.Application {
         dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
         fragments = new HashMap<>();
         gson = new GsonBuilder().setDateFormat(BaseApplication.DATE_FORMAT).create();
-        appData = new AppData(getApplicationContext());
         serviceCalls = new ServiceCalls(getApplicationContext());
         cacheDir = getApplicationContext().getExternalCacheDir();
         client = new OkHttpClient();

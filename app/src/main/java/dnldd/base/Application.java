@@ -7,5 +7,6 @@ public class Application extends BaseApplication{
     @Override
     public void onCreate() {
         super.onCreate();
+        setAppData(new AppData(getApplicationContext()));
     }
 }
