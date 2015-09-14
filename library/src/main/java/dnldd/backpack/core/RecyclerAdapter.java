@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import dnldd.backpack.model.Entity;
 import dnldd.backpack.viewholder.ViewHolder;
 
 
@@ -33,7 +34,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        Data item = (Data) items.get(position);
+        Entity item = (Entity) items.get(position);
         item.bindItem(app, viewHolder);
     }
 

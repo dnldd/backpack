@@ -62,6 +62,16 @@
                 android:textAllCaps="true"
                 android:text="yeah"/>
 
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="16dp"
+                android:max = "100"
+                android:indeterminate="false"
+                android:progress="60"
+                android:progressTint="?attr/colorControlActivated" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
