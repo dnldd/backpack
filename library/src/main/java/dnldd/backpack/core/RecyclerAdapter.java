@@ -24,7 +24,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        return null; /* override this every time after extending */
+        return null; /* override this every time after extending to factor in the viewType param */
     }
 
     @Override

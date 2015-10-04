@@ -8,7 +8,7 @@ import retrofit.http.Query;
 import rx.Observable;
 
 public interface GCMServiceInterface {
-    @POST("/register")
+    @POST("/gcm/register")
     /* mitigating a retrofit bug by supplying a @Body param, temporary  */
     Observable<JsonObject> register(@Body String body, @Query("token") String token, @Query("id") String id);
 }
