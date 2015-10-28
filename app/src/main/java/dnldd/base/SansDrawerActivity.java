@@ -19,8 +19,13 @@ public class SansDrawerActivity extends dnldd.backpack.activity.TabbedSansDrawer
         fragments.put("Drinks", new ListFragment());
         fragments.put("Assorted", new ListFragment());
 
+        LinkedHashMap<String, Integer> iconResIds = new LinkedHashMap<>();
+        iconResIds.put("Food", R.drawable.bp_notifications_none);
+        iconResIds.put("Drinks", R.drawable.bp_notifications_off);
+        iconResIds.put("Assorted", R.drawable.bp_notifications_on);
+
         setupSansDrawerActivity(R.layout.bp_tabbed_activity_layout, 0);
-        setupTabs(fragments);
+        setupImageTabs(fragments, iconResIds, R.color.grey_600);
         styleTitle("Base", TypefaceUtils.CONDENSED_REGULAR, dnldd.backpack.R.color.black_alpha_87, 0);
         styleTabs(dnldd.backpack.R.color.black_alpha_54, dnldd.backpack.R.color.black_alpha_87, 0, TypefaceUtils.CONDENSED_REGULAR);
     }

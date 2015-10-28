@@ -12,6 +12,8 @@ public class LocationUtils {
     protected static Location location;
 
     public Location getLocation(){ return location; }
+
+    // requires <uses-permission name="android.permission.ACCESS_COARSE_LOCATION" /> or <uses-permission name="android.permission.ACCESS_FINE_LOCATION" />
     public static void startLocationService(Context context){
         final LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

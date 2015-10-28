@@ -129,7 +129,7 @@ public class BaseApplication extends android.app.Application {
     public void setupGCMService(String senderID, String thirdPartyUrl){
         gcm = new GCM(getApplicationContext(), senderID, thirdPartyUrl);
         if(gcm.hasPlayServices(getApplicationContext())) {
-            gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson, gcm.getSenderID());
+            gcmServiceBuilder = new GCMServiceBuilder(getApplicationContext(), gson, gcm.getThirdPartyUrl());
             gcmService = gcmServiceBuilder.getGCMService();
             gcm.callRegister().subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())

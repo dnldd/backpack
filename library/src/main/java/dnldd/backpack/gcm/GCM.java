@@ -33,6 +33,7 @@ public class GCM {
     protected Context context;
 
     public String getSenderID(){ return senderID; }
+    public String getThirdPartyUrl(){ return thirdPartyUrl; }
 
     public GCM(Context context, String senderID, String thirdPartyUrl){
         this.context = context;

@@ -16,7 +16,6 @@ public class Article {
     protected Document document;
     protected ArrayList<Tag> tags;
 
-
     public String getTitle(){ return title; }
     public Element getBody(){ return body; }
     public Document getDocument(){ return document; }
