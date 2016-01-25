@@ -17,9 +17,6 @@ import android.view.animation.Interpolator;
 
 import static dnldd.backpack.view.progressbar.SmoothProgressBarUtils.*;
 
-/**
- * Created by castorflex on 11/10/13.
- */
 public class SmoothProgressDrawable extends Drawable implements Animatable {
 
   public interface Callbacks {
@@ -286,6 +283,7 @@ public class SmoothProgressDrawable extends Drawable implements Animatable {
     mPaint.setShader(linearGradient);
   }
 
+  @SuppressWarnings("ConstantConditions")
   private void drawStrokes(Canvas canvas) {
     if (mReversed) {
       canvas.translate(mBounds.width(), 0);
@@ -470,6 +468,7 @@ public class SmoothProgressDrawable extends Drawable implements Animatable {
    *
    * @param index
    */
+  @SuppressWarnings("JavaDoc")
   public void progressiveStart(int index) {
     resetProgressiveStart(index);
     start();
@@ -633,7 +632,7 @@ public class SmoothProgressDrawable extends Drawable implements Animatable {
       if (mGenerateBackgroundUsingColors) {
         mBackgroundDrawableWhenHidden = SmoothProgressBarUtils.generateDrawableWithColors(mColors, mStrokeWidth);
       }
-      SmoothProgressDrawable ret = new SmoothProgressDrawable(
+      return new SmoothProgressDrawable(
           mInterpolator,
           mSectionsCount,
           mStrokeSeparatorLength,
@@ -648,7 +647,6 @@ public class SmoothProgressDrawable extends Drawable implements Animatable {
           mProgressiveStartActivated,
           mBackgroundDrawableWhenHidden,
           mGradients);
-      return ret;
     }
 
     private void initValues(Context context, boolean editMode) {
@@ -659,6 +657,7 @@ public class SmoothProgressDrawable extends Drawable implements Animatable {
         mSpeed = Float.parseFloat(res.getString(dnldd.backpack.R.string.spb_default_speed));
         mReversed = res.getBoolean(dnldd.backpack.R.bool.spb_default_reversed);
         mProgressiveStartActivated = res.getBoolean(dnldd.backpack.R.bool.spb_default_progressiveStart_activated);
+        //noinspection deprecation
         mColors = new int[]{res.getColor(dnldd.backpack.R.color.spb_default_color)};
         mStrokeSeparatorLength = res.getDimensionPixelSize(dnldd.backpack.R.dimen.spb_default_stroke_separator_length);
         mStrokeWidth = res.getDimensionPixelOffset(dnldd.backpack.R.dimen.spb_default_stroke_width);

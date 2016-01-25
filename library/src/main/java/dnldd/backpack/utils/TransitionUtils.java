@@ -4,7 +4,7 @@ package dnldd.backpack.utils;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 public class TransitionUtils {
 	public static void transitionFragmentIn(final FragmentManager fragmentManager, android.support.v4.app.Fragment fragment) {
@@ -30,7 +30,7 @@ public class TransitionUtils {
 		LogUtils.log(LogUtils.INFO_LOG_TYPE, ((Object) fragment).getClass().getName() + " transitioned to.");
 	}
 	
-	public static void startNewActivity(ActionBarActivity parent, Class child, boolean flagNewTask){
+	public static void startNewActivity(AppCompatActivity parent, Class child, boolean flagNewTask){
 		Intent intent = new Intent(parent.getApplicationContext(), child);
 		if (flagNewTask) { intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); }
 		parent.startActivity(intent);

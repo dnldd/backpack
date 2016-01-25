@@ -1,8 +1,6 @@
 package dnldd.backpack.model;
 
 
-import android.provider.ContactsContract;
-
 import java.util.ArrayList;
 import java.util.List;
 

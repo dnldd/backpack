@@ -9,13 +9,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import dnldd.backpack.R;
 
 public class ImageTabsPagerAdapter extends FragmentPagerAdapter {
     protected List<String> mFragmentTitles;

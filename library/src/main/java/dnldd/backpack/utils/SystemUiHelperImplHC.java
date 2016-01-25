@@ -80,14 +80,17 @@ class SystemUiHelperImplHC extends SystemUiHelper.SystemUiHelperImpl
     }
 
     protected int createShowFlags() {
+        //noinspection deprecation
         return View.STATUS_BAR_VISIBLE;
     }
 
     protected int createHideFlags() {
+        //noinspection deprecation
         return View.STATUS_BAR_HIDDEN;
     }
 
     protected int createTestFlags() {
+        //noinspection deprecation
         return View.STATUS_BAR_HIDDEN;
     }
 }

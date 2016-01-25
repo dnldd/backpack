@@ -27,7 +27,7 @@ public class ChoiceDialog extends BaseDialog {
     public void bind(View view) {
         TextView message = (TextView) view.findViewById(R.id.message);
         Button cancel = (Button) view.findViewById(R.id.cancel);
-        Button ok = (Button) view.findViewById(R.id.ok);
+        //Button ok = (Button) view.findViewById(R.id.ok);
 
         final ChoiceDialog fragment = this;
 

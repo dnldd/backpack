@@ -19,6 +19,7 @@ public class ContactUtils {
         Cursor cursor = context.getContentResolver().query(
                 ContactsContract.Contacts.CONTENT_URI, null, null, null, ContactsContract.Data.DISPLAY_NAME);
 
+        assert cursor != null;
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
@@ -30,6 +31,7 @@ public class ContactUtils {
                             ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
                             ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = ?", new String[]{id}, null);
 
+                    assert numberCursor != null;
                     while (numberCursor.moveToNext()) {
                         String number = numberCursor.getString(numberCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                         Boolean found = false;

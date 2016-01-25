@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.ActionBar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -61,6 +62,7 @@ public class BaseActivity extends RxAppCompatActivity {
         SpannableString titleSpan = new SpannableString(title);
         titleSpan.setSpan(new TypefaceSpan(typefaceName), 0, title.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         if(colorResID > 0) {
+            //noinspection deprecation
             titleSpan.setSpan(new ForegroundColorSpan(getResources().getColor(colorResID)), 0, title.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
@@ -68,6 +70,8 @@ public class BaseActivity extends RxAppCompatActivity {
             titleSpan.setSpan(new AbsoluteSizeSpan(size, true), 0, title.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         }
 
-        getSupportActionBar().setTitle(titleSpan);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){ actionBar.setTitle(titleSpan); }
     }
 }

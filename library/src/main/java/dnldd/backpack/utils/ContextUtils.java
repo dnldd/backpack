@@ -8,19 +8,19 @@ import dnldd.backpack.core.BaseApplication;
 import dnldd.backpack.core.ServiceCalls;
 
 public class ContextUtils {
-    public static final BaseApplication getApp(Context context){
+    public static BaseApplication getApp(Context context){
         return (BaseApplication) context.getApplicationContext();
     }
 
-    public static final AppData getAppData(Context context){
+    public static AppData getAppData(Context context){
         return getApp(context).getAppData();
     }
 
-    public static final ServiceCalls getServiceCalls(Context context){
+    public static ServiceCalls getServiceCalls(Context context){
         return getApp(context).getServiceCalls();
     }
 
-    public static final GCMServiceInterface getGSMservice(Context context){
+    public static GCMServiceInterface getGSMservice(Context context){
         return getApp(context).getGcmService();
     }
 }

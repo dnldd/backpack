@@ -13,9 +13,6 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
 
-/**
- * Created by castorflex on 11/10/13.
- */
 public class SmoothProgressBar extends ProgressBar {
 
   private static final int INTERPOLATOR_ACCELERATE = 0;
@@ -43,7 +40,7 @@ public class SmoothProgressBar extends ProgressBar {
     TypedArray a = context.obtainStyledAttributes(attrs, dnldd.backpack.R.styleable.SmoothProgressBar, defStyle, 0);
 
 
-    final int color = a.getColor(dnldd.backpack.R.styleable.SmoothProgressBar_spb_color, res.getColor(dnldd.backpack.R.color.spb_default_color));
+    @SuppressWarnings("deprecation") final int color = a.getColor(dnldd.backpack.R.styleable.SmoothProgressBar_spb_color, res.getColor(dnldd.backpack.R.color.spb_default_color));
     final int sectionsCount = a.getInteger(dnldd.backpack.R.styleable.SmoothProgressBar_spb_sections_count, res.getInteger(dnldd.backpack.R.integer.spb_default_sections_count));
     final int separatorLength = a.getDimensionPixelSize(dnldd.backpack.R.styleable.SmoothProgressBar_spb_stroke_separator_length, res.getDimensionPixelSize(dnldd.backpack.R.dimen.spb_default_stroke_separator_length));
     final float strokeWidth = a.getDimension(dnldd.backpack.R.styleable.SmoothProgressBar_spb_stroke_width, res.getDimension(dnldd.backpack.R.dimen.spb_default_stroke_width));

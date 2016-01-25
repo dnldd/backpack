@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
+/* this structure to load more custom fonts if needed and load in BaseApplication */
 public class TypefaceUtils {
     public static String BLACK = "Roboto-Black.ttf";
     public static String BLACK_ITALIC ="Roboto-BlackItalic.ttf";
@@ -108,9 +109,16 @@ public class TypefaceUtils {
         Typeface typeface = TypefaceUtils.getTypeface(TypefaceUtils.CONDENSED_LIGHT);
 
         for(int index = 0; index < tabLayout.getTabCount(); ++index) {
-            SpannableString spannableString = new SpannableString(tabLayout.getTabAt(index).getText());
-            spannableString.setSpan(typeface, 0, tabLayout.getTabAt(index).getText().length(), 0);
-            tabLayout.getTabAt(index).setText(spannableString);
+            TabLayout.Tab tab  = tabLayout.getTabAt(index);
+            if(tab != null) {
+                CharSequence tabText = tab.getText();
+
+                if(tabText != null && tabText.length() > 0) {
+                    SpannableString spannableString = new SpannableString(tabText);
+                    spannableString.setSpan(typeface, 0, tabText.length(), 0);
+                    tab.setText(spannableString);
+                }
+            }
         }
     }
 }

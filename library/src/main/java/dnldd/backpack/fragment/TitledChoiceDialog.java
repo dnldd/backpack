@@ -29,6 +29,7 @@ public class TitledChoiceDialog extends BaseDialog {
         return super.onCreateView(inflater, container, bundle);
     }
 
+    @SuppressWarnings("UnusedAssignment")
     @Override
     public void bind(View view) {
         TextView message = (TextView) view.findViewById(R.id.message);

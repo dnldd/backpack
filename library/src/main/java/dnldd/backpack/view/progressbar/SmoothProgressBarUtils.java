@@ -3,9 +3,6 @@ package dnldd.backpack.view.progressbar;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 
-/**
- * Created by castorflex on 3/5/14.
- */
 public final class SmoothProgressBarUtils {
   private SmoothProgressBarUtils() {
   }
@@ -31,6 +28,7 @@ public final class SmoothProgressBarUtils {
       throw new IllegalArgumentException(String.format("Illegal angle %d: must be >=0 and <= 360", angle));
   }
 
+  @SuppressWarnings("MalformedFormatString")
   static void checkPositiveOrZero(float number, String name) {
     if (number < 0)
       throw new IllegalArgumentException(String.format("%s %d must be positive", name, number));

@@ -14,15 +14,16 @@ import retrofit.converter.GsonConverter;
 import retrofit.converter.SimpleXMLConverter;
 
 public class ServiceBuilder {
-    protected static String API_URL = "";
+    protected String API_URL;
     protected RestAdapter.Builder builder;
     protected RestAdapter adapter;
     protected Context context;
 
     public RestAdapter getServiceAdapter() { return adapter; }
 
-    public ServiceBuilder(Context context, OkHttpClient okHttpClient, Gson gson) {
+    public ServiceBuilder(Context context, String url, OkHttpClient okHttpClient, Gson gson) {
         this.context = context;
+        this.API_URL = url;
 
         builder = new RestAdapter.Builder()
                 .setEndpoint(API_URL)
@@ -34,7 +35,10 @@ public class ServiceBuilder {
         adapter = builder.build();
     }
 
-    public ServiceBuilder(Context context, OkHttpClient okHttpClient, Serializer serializer){
+    public ServiceBuilder(Context context, String url, OkHttpClient okHttpClient, Serializer serializer){
+        this.context = context;
+        this.API_URL = url;
+
         builder = new RestAdapter.Builder()
                 .setEndpoint(API_URL)
                 .setClient(new OkClient(okHttpClient))

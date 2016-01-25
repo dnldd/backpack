@@ -45,6 +45,7 @@ public class StringSpinnerAdapter extends BaseAdapter {
         TextView textView = (TextView) view.findViewById(android.R.id.text1);
         /* sets the text, text color, typeface and font size */
         textView.setText(mItems.get(position));
+        //noinspection deprecation
         textView.setTextColor(mContext.getResources().getColor(R.color.black_alpha_87));
         textView.setTypeface(TypefaceUtils.getTypeface(TypefaceUtils.CONDENSED_LIGHT));
         TypefaceUtils.setFontSize(textView, 16);
@@ -57,6 +58,7 @@ public class StringSpinnerAdapter extends BaseAdapter {
         TextView textView = (TextView) view.findViewById(android.R.id.text1);
          /* sets the text, text color, typeface and font size */
         textView.setText(mItems.get(position));
+        //noinspection deprecation
         textView.setTextColor(mContext.getResources().getColor(R.color.black_alpha_87));
         textView.setTypeface(TypefaceUtils.getTypeface(TypefaceUtils.CONDENSED_LIGHT));
         TypefaceUtils.setFontSize(textView, 16);

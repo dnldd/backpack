@@ -50,10 +50,13 @@ public class SansDrawerActivity extends BaseActivity {
     public void setupCollapsingTitle(String title, String typefaceName, int baseColorResID, int expandedColorResID){
         SpannableString titleSpan = new SpannableString(title);
         titleSpan.setSpan(new TypefaceSpan(typefaceName), 0, title.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        //noinspection deprecation
         titleSpan.setSpan(new ForegroundColorSpan(getResources().getColor(baseColorResID)), 0, title.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         collapsingToolbarLayout.setTitle(titleSpan);
+        //noinspection deprecation
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(baseColorResID));
+        //noinspection deprecation
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(expandedColorResID));
     }
 

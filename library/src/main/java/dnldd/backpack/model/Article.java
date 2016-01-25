@@ -8,8 +8,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import dnldd.backpack.utils.LogUtils;
-
 public class Article {
     protected String title;
     protected Element body;
@@ -43,10 +41,7 @@ public class Article {
         for (int index = 0; index < elements.size(); index++) {
             Element element = elements.get(index);
 
-            if (!element.hasText()) {
-                continue;
-            } else {
-
+            if (element.hasText()) {
                 if (element.tagName().equalsIgnoreCase(Tag.H1)) {
                     tags.add(new Tag(order, Tag.H1_TYPE, element));
                     order += 1;

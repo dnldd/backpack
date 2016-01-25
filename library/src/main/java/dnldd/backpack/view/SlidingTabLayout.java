@@ -138,6 +138,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
         mViewPager = viewPager;
         if (viewPager != null) {
+            //noinspection deprecation
             viewPager.setOnPageChangeListener(new InternalViewPagerListener());
             populateTabStrip();
         }
@@ -196,6 +197,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 lp.weight = 1;
             }
 
+            assert tabTitleView != null;
             tabTitleView.setText(adapter.getPageTitle(i));
             tabView.setOnClickListener(tabClickListener);
             String desc = mContentDescriptions.get(i, null);

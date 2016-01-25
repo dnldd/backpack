@@ -55,6 +55,7 @@ public abstract class StickyService extends Service {
         mServiceHandler = new ServiceHandler(mServiceLooper);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onStart(Intent intent, int startId) {
         Message msg = mServiceHandler.obtainMessage();

@@ -32,10 +32,11 @@ public class ImageUploadUtils {
     }
 
     public static Bitmap decodeBitmap(Context context, Uri uri) {
-        InputStream inputStream = null;
+        InputStream inputStream;
         try {
             inputStream = context.getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            assert inputStream != null;
             inputStream.close();
             return bitmap;
         } catch (FileNotFoundException e) {
@@ -48,7 +49,6 @@ public class ImageUploadUtils {
     }
 
     public static File getBitmapFile(Uri uri) {
-        File file = new File(uri.getPath());
-        return file;
+        return new File(uri.getPath());
     }
 }

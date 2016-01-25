@@ -30,6 +30,7 @@ public class TabbedDrawerActivity extends DrawerActivity {
         tabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
+                //noinspection deprecation,deprecation
                 return getResources().getColor(indicatorColorResID);
             }
         });
@@ -38,6 +39,7 @@ public class TabbedDrawerActivity extends DrawerActivity {
         for (int index = 0; index < tabsLinearLayout.getChildCount(); index++) {
             TextView textView = (TextView) tabsLinearLayout.getChildAt(index);
             if(fontColorResID > 0) {
+                //noinspection deprecation,deprecation
                 textView.setTextColor(getResources().getColor(fontColorResID));
             }
 

@@ -32,15 +32,14 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+/* extend this and add service builders as needed and service interfaces as needed */
 public class BaseApplication extends android.app.Application {
     protected SimpleDateFormat dateFormat;
     protected BaseActivity currentActivity;
     protected BaseFragment currentFragment;
     protected HashMap<String, android.support.v4.app.Fragment> fragments;
-    protected ServiceBuilder serviceBuilder;
     protected GCMServiceBuilder gcmServiceBuilder;
     protected ServiceCalls serviceCalls;
-    protected ServiceInterface service;
     protected GCM gcm;
     protected GCMServiceInterface gcmService;
     protected Gson gson;
